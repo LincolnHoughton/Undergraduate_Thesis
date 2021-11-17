@@ -1,7 +1,6 @@
 \section{Background}\label{Sect:background}
-Testing -- part 2 -- part 3
 \subsection{Linear Algebra}\label{Sect:linearAlgebra}
-In order to understand how to build the models we want, we must first have a knowledge of linear algebra, data analysis, and signal processing. Imagine you are presented with the data points in Figure \ref{figFunc1Samples} as samples from a secret function. How would you recreate this secret function?
+In order to understand how to build the models we want, we must first have a knowledge of linear algebra, data analysis, and signal processing. Imagine you are presented with the data points in Figure \ref{figFunc1Samples} as samples from a secret function. Building a function that matches the data will now be investigated.
 
 \begin{figure}[h]
 \includegraphics[scale = 0.4]{Figures/func1Samples}
@@ -12,22 +11,19 @@ In order to understand how to build the models we want, we must first have a kno
 \par Let us first make a guess of the form of the secret function. Because it looks like a simple polynomial, let us work with a power series of the form
 
 \begin{align}
-f(x) &= \sum_{n=0}^\infty a_n x^n
+f(x) &= \sum_{n=0}^\infty b_n x^n
 	\label{powerSum}\\ 
-&= a_0 + a_1x + a_2x^2 + a_3x^3 +\ldots \ .
+&= x^0b_0 + x^1b_1 + x^2b_2 + \ldots\ .
 	\label{powerSeries}
 \end{align}
 
-\par The coefficients, $a_n$, will determine the shape of the polynomial. Rewriting equation (\ref{powerSeries}) as
+\par The coefficients, $b_n$, will determine the shape of the polynomial.
 
-\begin{equation} \label{powerSetup}
-x^0b_0 + x^1b_1 + x^2b_2 + \ldots = f(x),
-\end{equation}
-will help prepare us to understand the linear algebra we will need. Now we can write equation (\ref{powerSetup}) with vectors as
+Equation \ref{powerSeries} can be evaluated at $x=2$ and written in matrix form as
 
 \begin{equation} \label{powerVectors}
 \begin{bmatrix}
-x^0 & x^1 & x^2 & x^3 & x^4
+1 & 2 & 4 & 8 & 16
 \end{bmatrix}
 \begin{bmatrix}
 b_0 \\
@@ -38,36 +34,22 @@ b_4
 \end{bmatrix}
 =
 \begin{bmatrix}
-f(x)
+f(2)
 \end{bmatrix} .
 \end{equation}
 
-\par Clearly with equation (\ref{powerVectors}) we can only input one point $(x_i,f(x_i))$ which does not provide enough information to solve for reasonable values in $\vec{b}$, the vector of coefficients. In figure \ref{figFunc1Samples} we have 6 samples, so we can repeat equation (\ref{powerVectors}) for each sample with the same coefficients. We can combine all six equations into one like so
+\par Equation \ref{powerVectors} is the expanded form of the fundamental linear algebra equation, 
 
-\begin{equation} \label{LinAlgGeneral}
-\begin{bmatrix}
-x^0 & x^1 & x^2 & x^3 & x^4 \\
-x^0 & x^1 & x^2 & x^3 & x^4 \\
-x^0 & x^1 & x^2 & x^3 & x^4 \\
-& & \vdots & &
-\end{bmatrix}
-\begin{bmatrix}
-b_0 \\
-b_1 \\
-b_2 \\
-b_3 \\
-b_4 
-\end{bmatrix}
-=
-\begin{bmatrix}
-f(x) \\ 
-f(x) \\
-f(x) \\ 
-\vdots
-\end{bmatrix} .
+\begin{equation} \label{fundLinAlg}
+A\vec{b} = \vec{y},
 \end{equation}
+where $A$ is a matrix.
 
-\par Now we can see that each row in the $x$ matrix corresponds with a row in the $f(x)$ vector. Each row represents one of our sample points, thus denoting 6 rows. This relationship between rows and individual sample points can be better visualized if subscripts are added to each respective value of $x$,
+\par Evaluating Equation \ref{powerSeries} at all of the data points in Figure \ref{figFunc1Samples} would increase the number of rows in the matrix. Each row in the $A$ matrix corresponds to a unique sample point.
+
+%\par Clearly with equation (\ref{powerVectors}) we can only input one point, $(x_i,f(x_i))$, which does not provide enough information to solve for reasonable values in $\vec{b}$, the vector of coefficients. In figure \ref{figFunc1Samples} we have 6 samples, so we can repeat equation (\ref{powerVectors}) for each sample with the same coefficients. We can combine all six equations into one like so
+
+%\par Now we can see that each row in the $x$ matrix corresponds with a row in the $f(x)$ vector. Each row represents one of our sample points, thus denoting 6 rows. This relationship between rows and individual sample points can be better visualized if subscripts are added to each respective value of $x$,
 
 \begin{equation} \label{LinAlgSubscript}
 \begin{bmatrix}
@@ -91,9 +73,9 @@ f(x_3) \\
 \vdots
 \end{bmatrix}.
 \end{equation}
-And finally with the true values of $A$ and $\vec{y}$ inserted,
+And finally, $A$ and $\vec{y}$ can be populated with their true values,
 
-\begin{align} \label{realValues}
+\begin{equation} \label{realValues}
 \begin{bmatrix}
 1 & 0 & 0^2 & 0^3 & 0^4 \\
 1 & 2 & 2^2 & 2^3 & 2^4 \\
@@ -109,7 +91,7 @@ b_2 \\
 b_3 \\
 b_4 
 \end{bmatrix}
-&=
+=
 \begin{bmatrix}
 f(0) \\ 
 f(2) \\
@@ -117,40 +99,13 @@ f(4) \\
 f(6) \\
 f(8) \\
 f(10)
-\end{bmatrix} \\
-\begin{bmatrix}
-1 & 0 & 0 & 0 & 0 \\
-1 & 2 & 4 & 8 & 16 \\
-1 & 4 & 16 & 64 & 256 \\
-1 & 6 & 36 & 216 & 1296 \\
-1 & 8 & 64 & 512 & 4096 \\
-1 & 10 & 100 & 1000 & 10000
 \end{bmatrix}
-\begin{bmatrix}
-b_0 \\
-b_1 \\
-b_2 \\
-b_3 \\
-b_4 
-\end{bmatrix}
-&=
-\begin{bmatrix}
-4.06427214 \\ 
-3.26415222 \\
-2.01261424 \\ 
-1.31046021 \\
-0.94640926 \\
-0.77709839
-\end{bmatrix}\label{realValuesSimp}.
-\end{align}
-
-\par Equation \ref{LinAlgSubscript} is the expanded form of the fundamental linear algebra equation, 
-
-\begin{equation} \label{fundLinAlg}
-A\vec{b} = \vec{y}.
 \end{equation}
 
-\par If the $A$ matrix were square and invertible, solving for $\vec{b}$ would be as simple as $\vec{b} = A^{-1}\vec{y}$. Because there are more equations than unknowns, this will be an \textit{over-determined} system; the alternative would be an \textit{under-determined} system, one with more unknowns than equations. In either case, the solutions to the linear systems become non-unique. This means there is not a single set of values for $\vec{b}$ that can solve Equation \ref{fundLinAlg}. In the example given, calculating one sample is quite easy, but in modeling more complicated systems, each sample becomes computationaly expensive. It will be later seen that the systems used will generally be underdetermined. Solving for the vector of coefficients can then be done by 
+\par If the $A$ matrix were square and invertible, solving for $\vec{b}$ would be as simple as $\vec{b} = A^{-1}\vec{y}$. Because there are more equations than unknowns, this is an \textit{over-determined} system; the alternative being an \textit{under-determined} system, one with more unknowns than equations.
+\par There will be either no solutions, or an infinite number of solutions. In the case of infinite solutions, the solution needs to be constrained. If there are no solutions, as is often the case with an underdetermined system, a least-squares approximation can be calculated. In either case, the solutions to the linear systems become non-unique. This means there is not a single set of values for $\vec{b}$ that can solve Equation \ref{fundLinAlg}.
+\par In the example given, calculating one sample is quite easy, but in modeling more complicated systems, each sample becomes computationaly expensive. It will later be seen that the systems used will generally be underdetermined.
+\par Solving an overdetermined system for the vector of coefficients can be done by 
 
 \begin{align}
 A\vec{b} &= \vec{y} \\
@@ -158,6 +113,14 @@ A\vec{b} &= \vec{y} \\
 \vec{b} &= A^T\vec{y},
 \end{align}
 where $A^T$ denotes the transpose of $A$.
+
+\par Solving an underdetermined system is done by SVD,
+
+\begin{align}
+A\vec{b} &= \vec{y} \\
+(A^TA)\vec{b} &= A^T\vec{y} \\
+\vec{b} &= A^T\vec{y}.
+\end{align}
 
 \par Now that $\vec{b}$, the vector of coefficients, has been solved for, the model can be used to predict the y position of any x value within the range of sample points. To produce a continuous visual of the model's fit, the model can take in x values for every point in the sample range and plot its respective evaluation. The result of this process can be seen in Figure \ref{figFunc1True}.
 
@@ -170,7 +133,7 @@ where $A^T$ denotes the transpose of $A$.
 
 
 \subsection{Basis Functions and Sample Size}\label{Sect:samplesAndFunctions}
-\par As seen in the previous example, and in particular Equations \ref{LinAlgSubscript}, \ref{realValues}, and \ref{realValuesSimp}, each row of matrix $A$ and vector $\vec{y}$ represents a single sampling and each column is a unique basis function. It should be understood that as either of these two variables increases, thus increasing the length or width of $A$, so should the accuracy and precision of the model increase. In theory, there is no limit to the number of samples or basis vectors that could be used to construct a model, but in reality, there is a balance between the former variables and computational capabilities. In the example given, an increase in the number of samples or basis functions will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
+\par As seen in the previous section, and in particular Equations \ref{LinAlgSubscript} and \ref{realValues}, each row of matrix $A$ and vector $\vec{y}$ represents a single sampling and each column is a unique basis function. It should be understood that as either of these two variables increases, thus increasing the length or width of $A$, so should the accuracy and precision of the model increase. In theory, there is no limit to the number of samples or basis vectors that could be used to construct a model, but in reality, there is a balance between the former variables and computational capabilities. In the example given, an increase in the number of samples or basis functions will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
 \par As discussed, the quantity of basis functions can make a large impact, but another important factor is quality. Though the choice of basis functions in the example above was simple, it can often be a difficult choice. Consider, for example, a Fourier basis. The equivalent of Equation \ref{LinAlgSubscript} in this basis would be
 
 \begin{equation} \label{fourierBasis}
