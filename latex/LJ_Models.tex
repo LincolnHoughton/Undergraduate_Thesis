@@ -27,8 +27,6 @@ and thus the force between two particles is zero at the bottom of the potential 
 \subsection{Constructing a Model}\label{Sect:LJModels}
 \par Ensuring a sufficient number and breadth of samples as well as reasonable basis functions becomes difficult as the number of dimensions goes beyond 2 or 3. Ways to determine quality of samples will be discussed later and from studying a variety of potential basis functions, bessel functions of the second kind, $Y_\alpha(x)$, have potential to be useful.
 \par Rewriting Equation \ref{eq:fundLinAlg} in component form yields
-
-
 \begin{equation}
 \begin{bmatrix}
 A_{11} & A_{12} & \ldots & A_{1m} \\
@@ -65,7 +63,9 @@ A_{11} &= Y_0(\alpha_{01} r_{12}) + Y_0(\alpha_{01} r_{13}) + Y_0(\alpha_{01} r_
 A_{12} &= Y_0(\alpha_{02} r_{12}) + Y_0(\alpha_{02} r_{13}) + Y_0(\alpha_{02} r_{23}) + \ldots  \\
 A_{1m} &= Y_0(\alpha_{0m} r_{12}) + Y_0(\alpha_{0m} r_{13}) + Y_0(\alpha_{0m} r_{23}) + \ldots
 \end{align}
-where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth bessel function of the first kind. Each $r_{xy}$ represents the separation vector norm ($\ell^2$ norm) for a single particle pair in the configuration.
+where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth bessel function of the first kind. Each $r_{xy}$ represents the separation vector norm ($\ell^2$ norm) for a single particle, $x$, and its pair, $y$, in the configuration. Because this model only accepts the $\ell^2$ norm of each separation vector, it is only a simple distance-dependent model using pair-interactions rather than a more complicated model using three body interactions (see Section \ref{Sect:futureWork}).
+
+\par An example of a random assortment of particles in a box can be seen in Figure \ref{fig:tenParticles}. If two particles are generated too close together, it will cause a large spike in the system's potential. Thus a minimum separation distance must be enforced for each configuration generated. This minimum separation distance will ensure some degree of uniformity in the configurations and their total potential, effectively reducing the range of possible energies, thus requiring fewer training systems. 
 
 \begin{figure}[h]
 \includegraphics[scale = 0.3]{Figures/tenParticles}
@@ -73,20 +73,12 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth bessel function of t
 \label{fig:tenParticles}} 
 \end{figure}
 
-\begin{itemize}
-\item Minimum separation distance
-\item Number of particles in box
-\item Sample/function num
-\item Why separation vector norms?
-\item 
-\end{itemize}
-
+\par Through experimentation, the detailed relationship between size of the training set, number of basis functions, and the minimum separation distance can be outlined. In general, the accuracy of the model increases as the number of training sets and basis functions increases. The accuracy also increases when the minimum separation distance does not correspond to a particularly large potential energy. In the case of the Lennard-Jones potential in Figure \ref{fig:LJ}, the minimum separation distance needs to be at least 0.8 or 0.9 to avoid large errors in the constructed model.
 
 
 
 \subsection{Multi-Type Particle Systems}\label{Sect:diatomic}
-\par Now that a simple monotomic model has been constructed, it can be adjusted to handle two different types of particles. The different particles can be labeled type-$A$ and type-$B$. This diatomic system will now require \textit{three} different potential equations, one describing each type of interaction. The three unique interactions are type-$A$ interacting with another type-$A$, a type-$A$ interacting wtih a type-$B$, and a type-$B$ with another type-$B$. Because these are arbitrary interactions, they can be defined by choosing reasonable values of $\varepsilon$ and $\sigma$ from Equation \ref{eq:LJ}. 
-
+\par Now that a simple monotomic model has been constructed, it can be adjusted to handle two different types of particles. The different particles can be labeled type-$A$ and type-$B$. This diatomic system will now require \textit{three} different potential equations, one describing each type of interaction. The three unique interactions are type-$A$ interacting with another type-$A$, a type-$A$ interacting with a type-$B$, and a type-$B$ with another type-$B$. Because these are arbitrary interactions (due to unspecified atom types), they can be defined by choosing reasonable values of $\varepsilon$ and $\sigma$ from Equation \ref{eq:LJ}. 
 \begin{align}
 V_{AB}(r) &= 4 \bigg[\Big(\frac{1}{r}\Big)^{12} - \Big(\frac{1}{r}\Big)^6\bigg] \label{LJ} \\
 V_{AA}(r) &= 4 (0.7) \bigg[\Big(\frac{0.8}{r}\Big)^{12} - \Big(\frac{0.8}{r}\Big)^6\bigg] \label{LJ} \\
@@ -100,7 +92,8 @@ The graph of each potential can be seen in Figure \ref{fig:3LJ}. Each of the equ
 \label{fig:3LJ}} 
 \end{figure}
 
-\par To handle this increase in complexity, matrix $A$ will need to contain \textit{three} columns where the previous model had only one. This is again because of the three different interaction types, one column for each. Another obstacle arises in the decision for particle type ratio. If the particle number (10) and box size ($4\times4$) remain constant, how many type-$A$ versus type-$B$ particles should there be? The question is really just a general question specified to this case; what is a sufficient breadth of samples for this model? As previously discussed, this depends greatly upon the desired range of predictions. As will be seen in Chapter \ref{Sect:procedureData}, the configurations vary in particle number as well as ratio. Therefore, this model should be trained and tested using a variety of particle ratios. Each training and testing set will thus be given a random number and ratio of particles to be populated in and calculated. 
+\par To handle this increase in complexity, matrix $A$ will need to contain \textit{three} columns where the previous model had only one. This is also because of the three different interaction types, one column for each. Another obstacle arises in the decision for particle type ratio. If the particle number (10) and box size ($4\times4$) remain constant, how many type-$A$ versus type-$B$ particles should there be?
+\par This question can be generalized to ask: what is a sufficient breadth of samples for this model? This depends greatly upon the desired range of predictions. As will be seen in Section \ref{Sect:procedureData}, the actual configurations vary in particle number and particle type ratio. Therefore, the model constructed here should be trained and tested using a spread values for those two variables. Each training and testing set will thus be populated by a random number and ratio of particles. 
 \par Once a model has been properly constructed and trained, how can its accuracy be easily determined and visualized?
 
 
