@@ -1,7 +1,7 @@
 \section{Preliminary Modeling}\label{Sect:modelPrep}
 
 \subsection{Lennard-Jones Potential}\label{Sect:LJPotential}
-Before jumping to quantum mechanical data, this math will be tested to construct models on a simplified potential, the Lennard-Jones potential. Though the Lennard-Jones potential is a simplification of reality, it does a excellent job representing real intermolecular forces of attraction and repulsion. The potential is a function of distance between two particles given by
+Before jumping to quantum mechanical data, this math will be tested to construct models on a simplified potential, the Lennard-Jones potential \cite{LJ-potential}. Though the Lennard-Jones potential is a simplification of reality, it does a excellent job representing real intermolecular forces of attraction and repulsion. The potential is a function of distance between two particles given by
 
 \begin{equation} \label{eq:LJ}
 V_{LJ}(r) = 4\varepsilon \bigg[\Big(\frac{\sigma}{r}\Big)^{12} - \Big(\frac{\sigma}{r}\Big)^6\bigg],
@@ -94,13 +94,10 @@ The graph of each potential can be seen in Figure \ref{fig:3LJ}. Each of the equ
 
 \par To handle this increase in complexity, matrix $A$ will need to contain \textit{three} columns where the previous model had only one. This is also because of the three different interaction types, one column for each. Another obstacle arises in the decision for particle type ratio. If the particle number (10) and box size ($4\times4$) remain constant, how many type-$A$ versus type-$B$ particles should there be?
 \par This question can be generalized to ask: what is a sufficient breadth of samples for this model? This depends greatly upon the desired range of predictions. As will be seen in Section \ref{Sect:procedureData}, the actual configurations vary in particle number and particle type ratio. Therefore, the model constructed here should be trained and tested using a spread values for those two variables. Each training and testing set will thus be populated by a random number and ratio of particles. 
-\par Once a model has been properly constructed and trained, how can its accuracy be easily determined and visualized?
+\par Once a model has been properly constructed and trained, its accuracy be visually determined by plotting each system's predicted energy versus its actual energy. An example of this type of plot can be seen in Figure \ref{fig:diatomicAccuracy} and will be used again later on.
 
-
-\begin{itemize}
-\item Particle type ratio
-\item Show model accuracy
-\end{itemize}
-
-
-
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{Figures/diatomicAccuracy}
+\caption{1000 tests of a model with a training size of 300 systems, 900 total basis functions, and a spread of particle type ratios each for a 10 particle system. The fit is very good denoting a highly accurate model.
+\label{fig:diatomicAccuracy}}
+\end{figure}
