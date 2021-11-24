@@ -8,7 +8,7 @@ A knowledge of linear algebra, data analysis, and signal processing is required 
 \label{fig:func1Samples}} 
 \end{figure}
 
-\par Let us first make a guess of the form of the secret function. Because it looks like a simple polynomial, let us work with a power series of the form
+\par We'll assume that the function can be expanded using a basis, and in this case we'll assume a power series:
 
 \begin{align}
 f(x) &= \sum_{n=0}^\infty b_n x^n
@@ -17,39 +17,19 @@ f(x) &= \sum_{n=0}^\infty b_n x^n
 	\label{eq:powerSeries}
 \end{align}
 
-\par The coefficients, $b_n$, will determine the shape of the polynomial.
+with the coefficients $b_n$ to be determined via the fitting process.  Evaluating equation \ref{eq:powerSeries} at the observed data points in the figure produces a system of equations:
 
-Equation \ref{eq:powerSeries} can be evaluated at $x=2$ and written in matrix form as
+\begin{align}
+f(0) &= b_0\\
+f(2) &= b_0 + 2 b_1 + 4 b_2 + \dots\\
+f(4) &= b_0 + 4 b_1 + 16 b_2 + \dots\\
+f(6) &= b_0 + 6 b_1 + 36 b_2 + \dots\\
+f(8) &= b_0 + 8 b_1 + 64 b_2 + \dots\\
+f(10) &= b_0 + 10 b_1 + 100 b_2 + \dots\\
+\end{align}
 
-\begin{equation} \label{eq:powerVectors}
-\begin{bmatrix}
-1 & 2 & 4 & 8 & 16
-\end{bmatrix}
-\begin{bmatrix}
-b_0 \\
-b_1 \\
-b_2 \\
-b_3 \\
-b_4 
-\end{bmatrix}
-=
-\begin{bmatrix}
-f(2)
-\end{bmatrix} .
-\end{equation}
 
-\par Equation \ref{eq:powerVectors} is the expanded form of the fundamental linear algebra equation, 
-
-\begin{equation} \label{eq:fundLinAlg}
-A\vec{b} = \vec{y},
-\end{equation}
-where $A$ is a matrix.
-
-\par Evaluating Equation \ref{eq:powerSeries} at all of the data points in Figure \ref{fig:func1Samples} would increase the number of rows in the matrix. Each row in the $A$ matrix corresponds to a unique sample point.
-
-%\par Clearly with equation (\ref{powerVectors}) we can only input one point, $(x_i,f(x_i))$, which does not provide enough information to solve for reasonable values in $\vec{b}$, the vector of coefficients. In figure \ref{figFunc1Samples} we have 6 samples, so we can repeat equation (\ref{powerVectors}) for each sample with the same coefficients. We can combine all six equations into one like so
-
-%\par Now we can see that each row in the $x$ matrix corresponds with a row in the $f(x)$ vector. Each row represents one of our sample points, thus denoting 6 rows. This relationship between rows and individual sample points can be better visualized if subscripts are added to each respective value of $x$,
+This system of equations can be expressed in the following matrix form:
 
 \begin{equation} \label{eq:LinAlgSubscript}
 \begin{bmatrix}
@@ -73,6 +53,10 @@ f(x_3) \\
 \vdots
 \end{bmatrix}.
 \end{equation}
+
+
+%\par Now we can see that each row in the $x$ matrix corresponds with a row in the $f(x)$ vector. Each row represents one of our sample points, thus producing 6 rows. This relationship between rows and individual sample points can be better visualized if subscripts are added to each respective value of $x$,
+
 And finally, $A$ and $\vec{y}$ can be populated with their true values,
 
 \begin{equation} \label{eq:realValues}
@@ -102,17 +86,10 @@ f(10)
 \end{bmatrix}
 \end{equation}
 
-\par If the $A$ matrix were square and invertible, solving for $\vec{b}$ would be as simple as $\vec{b} = A^{-1}\vec{y}$. Because there are more equations than unknowns, this is an \textit{over-determined} system; the alternative being an \textit{under-determined} system, one with more unknowns than equations.
-\par There will be either no solutions, or an infinite number of solutions. In the case of infinite solutions, the solution needs to be constrained. If there are no solutions, as is often the case with an underdetermined system, a least-squares approximation can be calculated. In either case, the solutions to the linear systems become non-unique. This means there is not a single set of values for $\vec{b}$ that can solve Equation \ref{eq:fundLinAlg}.
-\par In the example given, calculating one sample is quite easy, but in modeling more complicated systems, each sample becomes computationaly expensive. It will later be seen that the systems used will generally be underdetermined.
-\par Solving an overdetermined system for the vector of coefficients can be done by 
 
-\begin{align}
-A\vec{b} &= \vec{y} \\
-(A^TA)\vec{b} &= A^T\vec{y} \\
-\vec{b} &= A^T\vec{y}, \label{eq:bSolve}
-\end{align}
-where $A^T$ denotes the transpose of $A$.
+The shape of the matrix $\mathbf{A}$ determines the type of solution that can be found.  If there are fewer equations (rows) than unknowns (columns), the system is underdetermined and if it has more rows than columns it is overdetermined.  
+\subsubsection{Underdetermined systems}
+Because the columns an underdetermined system are dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. 
 
 \par Solving an underdetermined system is done by using singular value decomposition (SVD)\cite{linAlg-book}. To solve $A\vec{b}=\vec{y}$, first find the eigenvalues and their corresponding orthonormal eigenvectors of $A^TA$. $V$ is the matrix containing these eigenvectors and $\Sigma$ contains the singular values, the square roots of each non-zero eigenvalue, on its diagonal and $0$'s elsewhere, matching the shape of matrix $A$. Each column of the matrix $U$ can be constructed by $u_k=\frac{1}{\sigma_k}A\vec{v_k}$ where $\sigma_k$ are the singular values and $\vec{v_k}$ are the columns of $V$. The final result is the complete SVD of $A$ and the solving of $\vec{b}$ from Equation \ref{eq:bSolve} by
 
@@ -123,7 +100,25 @@ A & =U\Sigma V^T \\
 \vec{b} &= V\Sigma^TU^T\vec{y}.
 \end{align}
 
-\par Now that $\vec{b}$, the vector of coefficients, has been solved for, the model can be used to predict the y position of any x value within the range of sample points. To produce a continuous visual of the model's fit, the model can take in x values for every point in the sample range and plot its respective evaluation. The result of this process can be seen in Figure \ref{fig:func1True}.
+The solution vector $\vec{b}$ is the well-known least squares solution to the system. Using this solution vector, the model can be used to make predictions of the function for any x value within the range of sample points. To produce a continuous visual of the model's fit, the model can take in x values for every point in the sample range and plot its respective evaluation. The result of this process can be seen in Figure \ref{fig:func1True}.
+
+\subsubsection{Overdetermined system}
+In an overdetermined system, since the column vectors don't span the space that they live in, there may be no vectors $\vec{b}$ that solve the system.  The "closest" solution vector can be found by solving a slightly modified problem where the vector $\vec{y}$ is projected onto the subspace formed by the columns.  This is eqivalent to the well-known least squares approach and can be written in matrix form as:
+
+\begin{align}
+A\vec{b} &= \vec{y} \\
+(A^TA)\vec{b} &= A^T\vec{y} \\
+\vec{b} &= (A^TA)^{-1}A^T\vec{y}, \label{eq:bSolve}
+\end{align}
+where $A^T$ denotes the transpose of $A$.
+
+ %If the $A$ matrix were square and invertible, solving for $\vec{b}$ would be as simple as $\vec{b} = A^{-1}\vec{y}$. Because there are more equations than unknowns, this is an \textit{over-determined} system; the alternative being an \textit{under-determined} system, one with more unknowns than equations.
+%\par There will be either no solutions, or an infinite number of solutions. In the case of infinite solutions, the solution needs to be constrained. If there are no solutions, as is often the case with an underdetermined system, a least-squares approximation can be calculated. In either case, the solutions to the linear systems become non-unique. This means there is not a single set of values for $\vec{b}$ that can solve Equation \ref{eq:fundLinAlg}.
+%\par In the example given, calculating one sample is quite easy, but in modeling more complicated systems, each sample becomes computationaly expensive. It will later be seen that the systems used will generally be underdetermined.
+%\par Solving an overdetermined system for the vector of coefficients can be done by 
+
+Since DFT data points are so costly to generate, the matrices that are typically encountered when building materials models are most-often underdetermined (i.e. more basis functions than data points).
+
 
 \begin{figure}[h]
 \includegraphics[scale = 0.4]{Figures/func1True}
