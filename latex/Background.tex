@@ -89,7 +89,7 @@ f(10)
 
 The shape of the matrix $\mathbf{A}$ determines the type of solution that can be found.  If there are fewer equations (rows) than unknowns (columns), the system is underdetermined and if it has more rows than columns it is overdetermined.  
 \subsubsection{Underdetermined systems}
-Because the columns an underdetermined system are dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. 
+Because the columns of an underdetermined system are dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. 
 
 \par Solving an underdetermined system is done by using singular value decomposition (SVD)\cite{linAlg-book}. To solve $A\vec{b}=\vec{y}$, first find the eigenvalues and their corresponding orthonormal eigenvectors of $A^TA$. $V$ is the matrix containing these eigenvectors and $\Sigma$ contains the singular values, the square roots of each non-zero eigenvalue, on its diagonal and $0$'s elsewhere, matching the shape of matrix $A$. Each column of the matrix $U$ can be constructed by $u_k=\frac{1}{\sigma_k}A\vec{v_k}$ where $\sigma_k$ are the singular values and $\vec{v_k}$ are the columns of $V$. The final result is the complete SVD of $A$ and the solving of $\vec{b}$ from Equation \ref{eq:bSolve} by
 
