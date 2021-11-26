@@ -19,14 +19,14 @@ f(x) &= \sum_{n=0}^\infty b_n x^n
 
 with the coefficients $b_n$ to be determined via the fitting process.  Evaluating equation \ref{eq:powerSeries} at the observed data points in the figure produces a system of equations:
 
-\begin{align}
+\begin{align*}
 f(0) &= b_0\\
 f(2) &= b_0 + 2 b_1 + 4 b_2 + \dots\\
 f(4) &= b_0 + 4 b_1 + 16 b_2 + \dots\\
 f(6) &= b_0 + 6 b_1 + 36 b_2 + \dots\\
 f(8) &= b_0 + 8 b_1 + 64 b_2 + \dots\\
 f(10) &= b_0 + 10 b_1 + 100 b_2 + \dots\\
-\end{align}
+\end{align*}
 
 
 This system of equations can be expressed in the following matrix form:
@@ -106,9 +106,9 @@ The solution vector $\vec{b}$ is the well-known least squares solution to the sy
 In an overdetermined system, since the column vectors don't span the space that they live in, there may be no vectors $\vec{b}$ that solve the system.  The "closest" solution vector can be found by solving a slightly modified problem where the vector $\vec{y}$ is projected onto the subspace formed by the columns.  This is eqivalent to the well-known least squares approach and can be written in matrix form as:
 
 \begin{align}
-A\vec{b} &= \vec{y} \\
-(A^TA)\vec{b} &= A^T\vec{y} \\
-\vec{b} &= (A^TA)^{-1}A^T\vec{y}, \label{eq:bSolve}
+\mathbf{A}^T&(\vec{y} - \mathbf{A} \hat{\vec{b}}) = 0 \\
+\mathbf{A}^T\vec{y} &= \mathbf{A}^T\mathbf{A}\hat{\vec{b}} \\
+\hat{\vec{b}} &= (\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\vec{y}, \label{eq:bSolve}
 \end{align}
 where $A^T$ denotes the transpose of $A$.
 
@@ -122,15 +122,15 @@ Since DFT data points are so costly to generate, the matrices that are typically
 
 \begin{figure}[h]
 \includegraphics[scale = 0.4]{Figures/func1True}
-\caption{The true function is shown by the blue line and the points are the locations of our samples. The green line shows the function created by our model to predict the true function.
+\caption{The "Witch of Agnesi" function with Gaussian noise is shown in blue.  Samples from this function were gathered (circles) and used to construct a model using a simple polynomial basis.  The fit function is depicted in green.
 \label{fig:func1True}} 
 \end{figure}
 
 
 
-\subsection{Basis Functions and Sample Size}\label{Sect:samplesAndFunctions}
-\par As seen in the previous section, and in particular Equations \ref{eq:LinAlgSubscript} and \ref{eq:realValues}, each row of matrix $A$ and vector $\vec{y}$ represents a single sampling and each column is a unique basis function. It should be understood that as either of these two variables increases, thus increasing the length or width of $A$, so should the accuracy and precision of the model increase. In theory, there is no limit to the number of samples or basis vectors that could be used to construct a model, but in reality, there is a balance between the former variables and computational capabilities. In the example given, an increase in the number of samples or basis functions will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
-\par As discussed, the quantity of basis functions can make a large impact, but another important factor is quality. Though the choice of basis functions in the example above was simple, it can often be a difficult choice. Consider, for example, a Fourier basis. The equivalent of Equation \ref{eq:LinAlgSubscript} in this basis would be
+\subsection{Basis Functions and Size of Training Set}\label{Sect:samplesAndFunctions}
+\par The quality of the fit will be affected by (1)- the size of the training set (number of rows in matrix $\mathbf{A}$) and (2)- number of basis functions included in the expansion (columns in matrix $\mathbf{A}$). The convergence of our model with respect to these two parameters must be investigated. In theory there is no limit to the size of the training set or number of basis functions. However, since QM data is costly to generate, the size of the training set has a reasonable upper limit on the order of hundreds. In the example given, an increase in the traning set size or basis functions count will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
+\par As discussed, the number of basis functions can make a large impact, but another important factor is quality. Though the choice of basis functions in the example above was simple, it can often be a difficult choice. Consider, for example, a Fourier basis. The equivalent of Equation \ref{eq:LinAlgSubscript} in this basis would be
 
 \begin{equation} \label{eq:fourierBasis}
 \begin{bmatrix}
@@ -169,7 +169,7 @@ for an $n\times m$ matrix.
 
 \begin{figure}[h]
 \includegraphics[scale = 0.4]{Figures/poorSamps}
-\caption{A model with an insufficient breadth of samples will naturally produce a poor model. In this case, the secret function from Figure \ref{fig:2dFourier} was only sampled from the interval 0 to 1. If the model were evaluated at $x=2.5$, the fit would produce a highly inaccurate result when compared to the true function.
+\caption{Gathering samples that are not uniformly distributed across the function space will produce a model that does not predict well across the space. In this case, the secret function from Figure \ref{fig:2dFourier} was only sampled from the interval 0 to 1. If the model were evaluated at $x=2.5$, the fit would produce a highly inaccurate result when compared to the true function.
 \label{fig:poorSamps}} 
 \end{figure}
 
@@ -177,7 +177,7 @@ for an $n\times m$ matrix.
 
 %\begin{figure}[h]
 %\includegraphics[scale = 0.42]{Figures/3dFourier}
-%\caption{A three dimensional function in blue with a constructed model in green. The red points show the sampling of the true function. In this case, a Fourier basis is a poor choice and resulted in an inaccurate model of the true function.
+%\caption{Choosing the right basis: The upper graph is a fit to a function of two variables using a Fourier basis.  The lower graph is a fit to the same function using a polynomial basis. The Fourier basis is unable to reproduce the true function whereas the polynomial basis can. The red points show the sampling of the true function. .
 %\label{3dFourier}} 
 %\end{figure}
 
