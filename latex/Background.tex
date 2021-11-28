@@ -8,7 +8,7 @@ A basic knowledge of linear algebra, data analysis, and signal processing is req
 \label{fig:func1Samples}} 
 \end{figure}
 
-\par We'll assume that the function can be expanded using a basis, and in this case we'll assume a power series:
+\par It will be assumed that the function can be expanded using a basis, and in this case, a power series:
 
 \begin{align}
 f(x) &= \sum_{n=0}^\infty b_n x^n
@@ -17,7 +17,7 @@ f(x) &= \sum_{n=0}^\infty b_n x^n
 	\label{eq:powerSeries}
 \end{align}
 
-with the coefficients $b_n$ to be determined via the fitting process.  Evaluating equation \ref{eq:powerSeries} at the observed data points in figure \ref{fig:func1Samples} produces a system of equations:
+with the coefficients $b_n$ to be determined via the fitting process. Evaluating equation \ref{eq:powerSeries} at the observed data points in figure \ref{fig:func1Samples} produces a system of equations:
 
 \begin{align}
 f(0) &= b_0 \nonumber \\
@@ -91,7 +91,7 @@ Because the columns of an underdetermined system are linearly dependent, there a
 
 \par Solving an underdetermined system is done by using singular value decomposition (SVD)\cite{linAlg-book}. To solve $\mathbf{A}\vec{b}=\vec{y}$, first the eigenvalues and their corresponding orthonormal eigenvectors of $\mathbf{A}^T\mathbf{A}$ must be found. $V$ is the matrix containing these eigenvectors and $\Sigma$ is a diagonal matrix containing the singular values, the square roots of each non-zero eigenvalue, matching the shape of $\mathbf{A}$. Each column of the matrix $U$ can be constructed by $u_k=\frac{1}{\sigma_k}\mathbf{A}\vec{v_k}$ where $\sigma_k$ are the singular values and $\vec{v_k}$ are the columns of $V$. The final result is the complete SVD of $\mathbf{A}$ where $\mathbf{A}=U\Sigma V^T$ and $\vec{b}$ can be solved by,
 \begin{align}
-\mathbf{A}\vec{b} &= \vec{y} \nonumber \\
+\mathbf{A}\vec{b} &= \vec{y} \label{eq:Aby} \\
 \mathbf{A}^T\mathbf{A}\vec{b} &= \mathbf{A}^T\vec{y} \nonumber \\
 \vec{b} &= (U\Sigma V^T)^T\vec{y} \nonumber \\
 \vec{b} &= V\Sigma^TU^T\vec{y}.
