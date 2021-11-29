@@ -1,5 +1,5 @@
-\section{Procedure} \label{Sect:procedure}
-\subsection{Quantum Mechanical Data}\label{Sect:procedureData}
+\chapter{Procedure} \label{Sect:procedure}
+\section{Quantum Mechanical Data}\label{Sect:procedureData}
 \par First-principles calculations were performed within the framework of AFLOW\cite{} which employs the VASP software for computing energies.\cite{} Projector-augmented-wave (PAW) potentials were used and exchange-correlation functionals parametrized by Perdew, Burke, and Ernzerhof under the generalized gradient approximation (GGA)\cite{}. A dense $k$-mesh scheme was used to perform the numeric integration over the Brillioun zone\cite{}. Optimal choices of the unit cells, by standardization of the reciprocal lattice, were adopted to accelerate the convergence of the calculations.
 \par As previously discussed, the process of obtaining this data was computationally expensive, creating a bottleneck in the discovery of novelty alloys. The culmination of this research is to produce a simpler model that can be trained on the given data to reproduce expected configuration energies within a range of reasonable error. Figure \ref{histEnergy} shows a histogram of all the configuration energies in the data set.
 
@@ -37,7 +37,7 @@
 \label{system2data}} 
 \end{figure}
 
-\subsection{Model Construction}\label{Sect:procedureConstruction}
+\section{Model Construction}\label{Sect:procedureConstruction}
 \par With the file parsed and the important data retrieved, the process of building a model can commence. The potential energy of a single particle is due to its interactions with all its surrounding particles, thus to account for each interaction with nearby particles the unit cell must be propagated outwards in all three dimensions. All atomic pairs can be enumerated by adding multiples of the lattice vectors. Then the relative position of each affecting particle can be determined and the vector separating the particle pair can be calculated. These separation vectors are the information that will be passed into the basis function to construct the model. 
 \par Because the affect two particles have on each other drops off as a function of distance (similar to the Lennard-Jones potential), the unit cell does not need to be propogated infinitely in each direction, only out to a radius of reasonable influence, creating an imaginary sphere beyond which all interactions are negligible. It should be clear that the choice of this radius will make a significant impact on the quality of the model. It should also be noted that one arbitrarily chosen radius cannot be applied effectively to each unique system. A simple solution is to make the radius of this sphere of influence equal to the magnitude of the largest lattice vector multiplied by a constant. The effect of this constant on the model's precision can be tested later, but for now will be chosen to be 1.2.
 \par The simplification of reality due to this ``sphere of influence" gives a clear upper bound to our unit cell propagation. It is expected that the unit cell will be propagated out further than the radius in each direction, thus encapsulating said sphere. An example of this iterated unit cell can be seen in Figure \ref{iteratedUnitCells}. 

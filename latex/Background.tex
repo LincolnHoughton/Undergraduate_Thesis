@@ -1,5 +1,5 @@
-\section{Background}\label{Sect:background}
-\subsection{Linear Algebra}\label{Sect:linearAlgebra}
+\chapter{Background}\label{Sect:background}
+\section{Linear Algebra}\label{Sect:linearAlgebra}
 A basic knowledge of linear algebra, data analysis, and signal processing is required to understand how to build simple yet useful models. Samples from an unknown function are presented in Figure \ref{fig:func1Samples}. Building a function that matches the data will now be investigated.
 
 \begin{figure}%[h]
@@ -87,7 +87,7 @@ f(10)
 The shape of the matrix $\mathbf{A}$ determines the type of solution that can be found.  If there are fewer equations (rows) than unknowns (columns), the system is underdetermined and if it has more rows than columns it is overdetermined.  
 
 
-\subsubsection{Underdetermined systems}
+\subsection{Underdetermined systems}
 Because the columns of an underdetermined system are linearly dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. 
 
 \par Solving an underdetermined system is done by using singular value decomposition (SVD). To solve $\mathbf{A}\vec{b}=\vec{y}$, first the eigenvalues and their corresponding orthonormal eigenvectors of $\mathbf{A}^T\mathbf{A}$ must be found. $V$ is the matrix containing these eigenvectors and $\Sigma$ is a diagonal matrix containing the singular values, the square roots of each non-zero eigenvalue, matching the shape of $\mathbf{A}$. Each column of the matrix $U$ can be constructed by $u_k=\frac{1}{\sigma_k}\mathbf{A}\vec{v_k}$ where $\sigma_k$ are the singular values and $\vec{v_k}$ are the columns of $V$. The final result is the complete SVD of $\mathbf{A}$ where $\mathbf{A}=U\Sigma V^T$ and $\vec{b}$ can be solved by,
@@ -100,7 +100,7 @@ Because the columns of an underdetermined system are linearly dependent, there a
 
 \par The solution vector $\vec{b}$ is the well-known least squares solution to the system. Using this solution vector, the model can be used to make predictions of the function for any $x$ value within the range of sample points. To produce a continuous visual of the model's fit, the model can take in $x$ values for every point in the sample range and plot its respective evaluation. The result of this process can be seen in Figure \ref{fig:func1True}.
 
-\subsubsection{Overdetermined system}
+\subsection{Overdetermined system}
 In an overdetermined system, since the column vectors don't span the space that they live in, there may be no vectors $\vec{b}$ that solve the system.  The ``closest" solution vector can be found by solving a slightly modified problem where the vector $\vec{y}$ is projected onto the subspace formed by the columns.  This is eqivalent to the well-known least squares approach and can be written in matrix form as:
 
 \begin{align}
@@ -122,7 +122,7 @@ where $\mathbf{A}^T$ denotes the transpose of $\mathbf{A}$.
 
 
 
-\subsection{Basis Functions and Size of Training Set}\label{Sect:samplesAndFunctions}
+\section{Basis Functions and Size of Training Set}\label{Sect:samplesAndFunctions}
 \par The quality of the fit will be affected by (1)- the size of the training set (number of rows in matrix $\mathbf{A}$) and (2)- number of basis functions included in the expansion (columns in matrix $\mathbf{A}$). The convergence of our model with respect to these two parameters must be investigated. In theory there is no limit to the size of the training set or number of basis functions. However, since QM data is costly to generate, the size of the training set has a reasonable upper limit on the order of hundreds. In the example given, an increase in the traning set size or basis functions count will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
 \par As discussed, the number of basis functions can make a large impact, but another important factor is quality. Though the choice of basis functions in the example above was simple, it can often be a difficult choice. Consider, for example, a Fourier basis. The equivalent of Equation \ref{eq:LinAlgSubscript} in this basis would be
 
@@ -188,5 +188,5 @@ where $\mathbf{A}$ is an $n\times m$ matrix.
 \end{figure}
 
 
-\subsection{Julia}\label{Sect:julia}
+\section{Julia}\label{Sect:julia}
 The figures provided throughout this paper were produced using the Julia programming language. Though encouraged to use Python for the majority of my formal education, Julia is a relatively new and fast growing language in terms of popularity. 

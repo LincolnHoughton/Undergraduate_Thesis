@@ -1,6 +1,6 @@
-\section{Preliminary Modeling}\label{Sect:modelPrep}
+\chapter{Preliminary Modeling}\label{Sect:modelPrep}
 
-\subsection{Lennard-Jones Potential}\label{Sect:LJPotential}
+\section{Lennard-Jones Potential}\label{Sect:LJPotential}
 Before jumping to the DFT data, this math and theory will be confirmed by constructing models on a simplified potential, the Lennard-Jones potential \cite{LJ-potential}. Though the Lennard-Jones potential is a simplification of reality, it does a excellent job representing real intermolecular forces of attraction and repulsion. The potential is a function of distance between two particles given by
 
 \begin{equation} \label{eq:LJ}
@@ -25,7 +25,7 @@ and thus the force between two particles is zero at the bottom of the potential 
 
 
 
-\subsection{Constructing a Model}\label{Sect:LJModels}
+\section{Constructing a Model}\label{Sect:LJModels}
 \par Ensuring a sufficient number and breadth of samples as well as reasonable basis functions becomes difficult as the number of dimensions goes beyond 2 or 3. Ways to determine quality of samples will be discussed later and from studying a variety of potential basis functions, bessel functions of the second kind, $Y_\alpha(x)$, have potential to be useful.
 \par Rewriting Equation \ref{eq:Aby} in component form yields
 \begin{equation}
@@ -79,7 +79,7 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth bessel function of t
 
 
 
-\subsection{Multi-Type Particle Systems}\label{Sect:diatomic}
+\section{Multi-Type Particle Systems}\label{Sect:diatomic}
 \par Now that a simple monotomic model has been constructed, it can be adjusted to handle two different types of particles. The different particles can be labeled type-$A$ and type-$B$. This diatomic system will now require \textit{three} different potential equations, one describing each type of interaction. The three unique interactions are type-$A$ interacting with another type-$A$, a type-$A$ interacting with a type-$B$, and a type-$B$ with another type-$B$. Because these are arbitrary interactions (due to unspecified atomic structure), they can be defined by choosing reasonable values of $\varepsilon$ and $\sigma$ from Equation \ref{eq:LJ}. 
 \begin{align}
 V_{AB}(r) &= 4 \bigg[\Big(\frac{1}{r}\Big)^{12} - \Big(\frac{1}{r}\Big)^6\bigg] \label{LJ} \\
