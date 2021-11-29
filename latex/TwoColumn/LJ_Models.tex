@@ -8,9 +8,8 @@ V_{LJ}(r) = 4\varepsilon \bigg[\Big(\frac{\sigma}{r}\Big)^{12} - \Big(\frac{\sig
 \end{equation}
 where $\varepsilon$ and $\sigma$ are constants for a given particle interaction. Figure \ref{fig:LJ} shows the plot of this potential.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.5]{Figures/LJPotential}
+\begin{figure}[h]
+\includegraphics[scale = 0.4]{Figures/LJPotential}
 \caption{The Lennard-Jones potential. A simple yet realistic model of intramolecular forces.
 \label{fig:LJ}} 
 \end{figure}
@@ -68,9 +67,8 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth bessel function of t
 
 \par An example of a random assortment of particles in a box can be seen in Figure \ref{fig:tenParticles}. If two particles are generated too close together, it will cause a large spike in the system's potential. Thus a minimum separation distance must be enforced for each configuration generated. This minimum separation distance will ensure some degree of uniformity in the configurations and their total potential, effectively reducing the range of possible energies and requiring fewer training systems. 
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.4]{Figures/tenParticles}
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{Figures/tenParticles}
 \caption{A random assortment of 10 particles in a 4x4 square. No two particles are allowed to be within a pre-specified distance of each other. 
 \label{fig:tenParticles}} 
 \end{figure}
@@ -88,9 +86,8 @@ V_{BB}(r) &= 4 (0.4) \bigg[\Big(\frac{1.1}{r}\Big)^{12} - \Big(\frac{1.1}{r}\Big
 \end{align}
 The graph of each potential can be seen in Figure \ref{fig:3LJ}. Each of the equilibrium positions and energies is slightly different, but all in the same neighborhood.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.5]{Figures/newLJPotential}
+\begin{figure}[h]
+\includegraphics[scale = 0.4]{Figures/newLJPotential}
 \caption{A Lennard-Jones potential for each particle interaction type (AA, AB, and BB). Each interaction potential has a slightly different equilibrium position and energy. 
 \label{fig:3LJ}} 
 \end{figure}
@@ -99,9 +96,8 @@ The graph of each potential can be seen in Figure \ref{fig:3LJ}. Each of the equ
 \par This question can be generalized to ask: what is a sufficient breadth of samples for this model? The answer depends greatly upon the desired range of predictions. As will be seen in Section \ref{Sect:procedureData}, the actual configurations vary in particle number and particle type ratio. Therefore, the model constructed here should be trained and tested using a spread of values for those two variables. Each training and testing set will thus be populated by a random number and ratio of particles. 
 \par Once a model has been properly constructed and trained, its accuracy can be visually determined by plotting each system's predicted energy versus its actual energy. An example of this type of plot can be seen in Figure \ref{fig:diatomicAccuracy} and will be used again later on.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.4]{Figures/diatomicAccuracy}
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{Figures/diatomicAccuracy}
 \caption{1000 tests of a model with a training size of 300 systems, 900 total basis functions, and a spread of particle type ratios each for a 10 particle system. The fit is very good, denoting a highly accurate model.
 \label{fig:diatomicAccuracy}}
 \end{figure}

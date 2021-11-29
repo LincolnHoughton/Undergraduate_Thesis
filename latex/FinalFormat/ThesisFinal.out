@@ -1,0 +1,23 @@
+\BOOKMARK [0][-]{bm:Title.0}{Title Page}{}% 1
+\BOOKMARK [0][-]{bm:Copyright.0}{Copyright}{}% 2
+\BOOKMARK [0][-]{bm:DepAp.0}{Department Approval}{}% 3
+\BOOKMARK [0][-]{bm:Abstract.0}{Abstract}{}% 4
+\BOOKMARK [0][-]{bm:Acknowledge.0}{Acknowledgments}{}% 5
+\BOOKMARK [0][-]{section*.1}{Table of Contents}{}% 6
+\BOOKMARK [0][-]{section*.3}{List of Figures}{}% 7
+\BOOKMARK [1][-]{section.0.1}{0.1 Introduction}{section*.3}% 8
+\BOOKMARK [1][-]{section.0.2}{0.2 Background}{section*.3}% 9
+\BOOKMARK [2][-]{subsection.0.2.1}{0.2.1 Linear Algebra}{section.0.2}% 10
+\BOOKMARK [2][-]{subsection.0.2.2}{0.2.2 Basis Functions and Size of Training Set}{section.0.2}% 11
+\BOOKMARK [2][-]{subsection.0.2.3}{0.2.3 Julia}{section.0.2}% 12
+\BOOKMARK [1][-]{section.0.3}{0.3 Preliminary Modeling}{section*.3}% 13
+\BOOKMARK [2][-]{subsection.0.3.1}{0.3.1 Lennard-Jones Potential}{section.0.3}% 14
+\BOOKMARK [2][-]{subsection.0.3.2}{0.3.2 Constructing a Model}{section.0.3}% 15
+\BOOKMARK [2][-]{subsection.0.3.3}{0.3.3 Multi-Type Particle Systems}{section.0.3}% 16
+\BOOKMARK [1][-]{section.0.4}{0.4 Procedure}{section*.3}% 17
+\BOOKMARK [2][-]{subsection.0.4.1}{0.4.1 Quantum Mechanical Data}{section.0.4}% 18
+\BOOKMARK [2][-]{subsection.0.4.2}{0.4.2 Model Construction}{section.0.4}% 19
+\BOOKMARK [1][-]{section.0.5}{0.5 Results and Analysis}{section*.3}% 20
+\BOOKMARK [1][-]{section.0.6}{0.6 Conclusion}{section*.3}% 21
+\BOOKMARK [2][-]{subsection.0.6.1}{0.6.1 Future Work}{section.0.6}% 22
+\BOOKMARK [0][-]{section*.25}{Bibliography}{}% 23

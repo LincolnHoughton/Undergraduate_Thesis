@@ -3,9 +3,8 @@
 \par First-principles calculations were performed within the framework of AFLOW\cite{} which employs the VASP software for computing energies.\cite{} Projector-augmented-wave (PAW) potentials were used and exchange-correlation functionals parametrized by Perdew, Burke, and Ernzerhof under the generalized gradient approximation (GGA)\cite{}. A dense $k$-mesh scheme was used to perform the numeric integration over the Brillioun zone\cite{}. Optimal choices of the unit cells, by standardization of the reciprocal lattice, were adopted to accelerate the convergence of the calculations.
 \par As previously discussed, the process of obtaining this data was computationally expensive, creating a bottleneck in the discovery of novelty alloys. The culmination of this research is to produce a simpler model that can be trained on the given data to reproduce expected configuration energies within a range of reasonable error. Figure \ref{histEnergy} shows a histogram of all the configuration energies in the data set.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.4]{Figures/UnitCellEnergies}
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{Figures/UnitCellEnergies}
 \caption{A histogram showing all the configuration energies in the original data file. The majority lie within the $-20$eV to $-60$eV range, with a few outliers around $-150$eV.
 \label{histEnergy}} 
 \end{figure}
@@ -13,14 +12,13 @@
 \par Each configuration in the data represents a unique primitive unit cell. A unit cell is the building block of any crystal structure. Each unit cell is an identical copy of every other, with the same shape, size, and contents. A \textit{primitive} unit cell is the smallest possible unit cell which contains only one of each uniquely positioned atoms in the crystal\cite{solidStateBook}. An example of a primitive unit cell configuration can be seen in Figure \ref{primitiveUnitCells}.
 
 \begin{figure}
-  \centering
-  \begin{subfigure}{0.53\textwidth}
+  \begin{subfigure}{0.25\textwidth}
     \includegraphics[width=\linewidth]{Figures/primitiveCell1}
     %\caption{First subfigure} 
     \label{primitiveFirst}
   \end{subfigure}%
   \hspace*{\fill}   % maximize separation between the subfigures
-  \begin{subfigure}{0.49\textwidth}
+  \begin{subfigure}{0.23\textwidth}
     \includegraphics[width=\linewidth]{Figures/primitiveCell2}
     %\caption{Second subfigure} 
     \label{primitiveSecond}
@@ -30,9 +28,8 @@
 
 \par To use the data in the \textit{.txt} file, it needs to be parsed into vectors that can be easily manipulated. An example of the data being parsed can be seen in Figure \ref{system2data}. The number on the second line is the lattice parameter, followed by three lattice vectors in $(i,j,k)$ coordinates. The line following contains two numbers, the first is the number of silver (Ag) atoms in the unit cell and the second is the number of platinum (Pt) atoms. In direct coordinates (in terms of the lattice vectors) the positions of each silver and platinum atom are then given. The last line in this system tells the total potential energy of the unit cell configuration. 
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.4]{Figures/system2}
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{Figures/system2}
 \caption{An example of the data given in AgPtdata.txt that needs to be used to build the model.
 \label{system2data}} 
 \end{figure}
@@ -43,15 +40,14 @@
 \par The simplification of reality due to this ``sphere of influence" gives a clear upper bound to our unit cell propagation. It is expected that the unit cell will be propagated out further than the radius in each direction, thus encapsulating said sphere. An example of this iterated unit cell can be seen in Figure \ref{iteratedUnitCells}. 
 
 \begin{figure}
-  \centering
-  \begin{subfigure}{0.53\textwidth}
+  \begin{subfigure}{0.47\textwidth}
     \includegraphics[width=\linewidth]{Figures/iteratedUnitCell}
     %\caption{First subfigure} 
     \label{iteratedUnitCellFirst}
   \end{subfigure}%
-  %\\
-  \hspace*{\fill}   % maximize separation between the subfigures
-  \begin{subfigure}{0.5\textwidth}
+  \\
+  %\hspace*{\fill}   % maximize separation between the subfigures
+  \begin{subfigure}{0.45\textwidth}
     \includegraphics[width=\linewidth]{Figures/iteratedUnitCell2}
     %\caption{Second subfigure} 
     \label{iteratedUnitCellSecond}
@@ -61,9 +57,8 @@
 
 Each unit cell in Figure \ref{iteratedUnitCells} can now be populated with all the contained atoms. Every atom inside the sphere can then be extracted. When these atoms are stored into a new vector, they can be plotted as in Figure \ref{plotAgAtomSphere}. When this process is repeated for every system in the DFT data, the result is a vector containing these ``important positions" for each unique silver and platinum atom in each unit cell. The separation vector norms can be quickly calculated and stored.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.65]{Figures/plotAgAtomSphere(3,1)}
+\begin{figure}[h]
+\includegraphics[scale = 0.6]{Figures/plotAgAtomSphere(3,1)}
 \caption{Every silver and platinum atom inside the sphere of interest. According to the model, these are the only atoms interacting with the central atom in question. This data is taken from the first silver atom in the third sample system. 
 \label{plotAgAtomSphere}} 
 \end{figure}

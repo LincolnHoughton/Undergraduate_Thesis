@@ -1,0 +1,20 @@
+\contentsline {chapter}{Table of Contents}{vii}{section*.1}%
+\contentsline {chapter}{List of Figures}{viii}{section*.3}%
+\contentsline {section}{\numberline {0.1}Introduction}{1}{section.0.1}%
+\contentsline {section}{\numberline {0.2}Background}{2}{section.0.2}%
+\contentsline {subsection}{\numberline {0.2.1}Linear Algebra}{2}{subsection.0.2.1}%
+\contentsline {subsubsection}{Underdetermined systems}{4}{section*.6}%
+\contentsline {subsubsection}{Overdetermined system}{5}{section*.7}%
+\contentsline {subsection}{\numberline {0.2.2}Basis Functions and Size of Training Set}{5}{subsection.0.2.2}%
+\contentsline {subsection}{\numberline {0.2.3}Julia}{7}{subsection.0.2.3}%
+\contentsline {section}{\numberline {0.3}Preliminary Modeling}{9}{section.0.3}%
+\contentsline {subsection}{\numberline {0.3.1}Lennard-Jones Potential}{9}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {0.3.2}Constructing a Model}{10}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {0.3.3}Multi-Type Particle Systems}{12}{subsection.0.3.3}%
+\contentsline {section}{\numberline {0.4}Procedure}{15}{section.0.4}%
+\contentsline {subsection}{\numberline {0.4.1}Quantum Mechanical Data}{15}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {0.4.2}Model Construction}{17}{subsection.0.4.2}%
+\contentsline {section}{\numberline {0.5}Results and Analysis}{20}{section.0.5}%
+\contentsline {section}{\numberline {0.6}Conclusion}{22}{section.0.6}%
+\contentsline {subsection}{\numberline {0.6.1}Future Work}{25}{subsection.0.6.1}%
+\contentsline {chapter}{Bibliography}{25}{section*.25}%

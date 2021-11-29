@@ -2,9 +2,8 @@
 \subsection{Linear Algebra}\label{Sect:linearAlgebra}
 A basic knowledge of linear algebra, data analysis, and signal processing is required to understand how to build simple yet useful models. Samples from an unknown function are presented in Figure \ref{fig:func1Samples}. Building a function that matches the data will now be investigated.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.5]{Figures/func1Samples}
+\begin{figure}[h]
+\includegraphics[scale = 0.4]{Figures/func1Samples}
 \caption{An unknown function sampled by 6 data points.
 \label{fig:func1Samples}} 
 \end{figure}
@@ -113,9 +112,8 @@ where $\mathbf{A}^T$ denotes the transpose of $\mathbf{A}$.
 \par Since DFT data points are so costly to generate, the matrices that are typically encountered when building materials models are most-often underdetermined (i.e. more basis functions than data points).
 
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.5]{Figures/func1True}
+\begin{figure}[h]
+\includegraphics[scale = 0.4]{Figures/func1True}
 \caption{The ``Witch of Agnesi" function with Gaussian noise is shown in blue.  Samples from this function were gathered (circles) and used to construct a model using a simple polynomial basis.  The fit function is depicted in green.
 \label{fig:func1True}} 
 \end{figure}
@@ -153,33 +151,36 @@ f(x_n)
 where $\mathbf{A}$ is an $n\times m$ matrix.
 \par When used in the proper circumstance, this Fourier basis can be an excellent choice for modeling a function, as in Figure \ref{fig:2dFourier}.
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.35]{Figures/2dFourier}
+\begin{figure}[h]
+\includegraphics[scale = 0.27]{Figures/2dFourier}
 \caption{The sample points shown were used to build a model of the function in green, and the true function is displayed in blue. The Fourier basis resulted in an excellent fit. 
 \label{fig:2dFourier}} 
 \end{figure}
 
 \par When chosing sample points, there are again two variables to consider: number and breadth. As will be seen later, the number of samples can have a significant impact on the construction time and accuracy of a model. The breadth of samples is similarly important. If all samples from Figure \ref{fig:2dFourier} were taken between 0 and 1, the model produced would be a poor fit for the function, as in Figure \ref{fig:poorSamps}. 
 
-\begin{figure}%[h]
-\centering
-\includegraphics[scale = 0.5]{Figures/poorSamps}
+\begin{figure}[h]
+\includegraphics[scale = 0.4]{Figures/poorSamps}
 \caption{Gathering samples that are not uniformly distributed across the function space will produce a model that does not predict well across the space. In this case, the secret function from Figure \ref{fig:2dFourier} was only sampled from the interval 0 to 1. If the model were evaluated at $x=2.5$, the fit would produce a highly inaccurate result when compared to the true function.
 \label{fig:poorSamps}} 
 \end{figure}
 
 \par By this point it should be obvious to the reader that the decision of number and breadth of sample points as well as quantity and quality of basis functions is critical to the model's performance. With well chosen basis functions but poor breadth of samples, a model's accuracy can be greatly limited, as in Figure \ref{fig:poorSamps}. Figure \ref{fig:3dFourier} shows the reverse situation, good number and breadth of samples, but poorly chosen basis functions. 
 
+%\begin{figure}[h]
+%\includegraphics[scale = 0.42]{Figures/3dFourier}
+%\caption{Choosing the right basis: The upper graph is a fit to a function of two variables using a Fourier basis.  The lower graph is a fit to the same function using a polynomial basis. The Fourier basis is unable to reproduce the true function whereas the polynomial basis can. The red points show the sampling of the true function. .
+%\label{3dFourier}} 
+%\end{figure}
+
 \begin{figure}
-  \centering
-  \begin{subfigure}{0.53\textwidth}
+  \begin{subfigure}{0.35\textwidth}
     \includegraphics[width=\linewidth]{Figures/3dFourier}
     \caption{Fourier basis. $A$ is a $50\times7$ matrix.} 
     \label{fig:3dFourier}
   \end{subfigure}%
-  \hspace*{\fill}
-  \begin{subfigure}{0.5\textwidth}
+  \\
+  \begin{subfigure}{0.35\textwidth}
     \includegraphics[width=\linewidth]{Figures/3dPower}
     \caption{Power basis. $A$ is a $10\times7$ matrix.} 
     \label{fig:3dPower}
