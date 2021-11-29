@@ -1,5 +1,5 @@
 \chapter{Results and Analysis}\label{Sect:results}
-\par The quality of fit for a single model is given in Figure \ref{outputExample}. For some models, there are predictions that differ significantly, more than 100$eV$, from their true values, these are configurations that are difficult for the model to predict. In those cases, the number of outlying crystals has been counted then excluded from the average error calculation. In this way, the average error can become mostly independent of the model's outliers. When a difficult-to-predict configuration is poorly predicted and thus excluded from the average error, it can reduce the overall average error for a given model. A better trained model may then predict that configuration energy slightly better, within 100$eV$ of its true value, resulting in a larger average error. Therefore the average error and number of large errors must both be considered when assessing the value of the model. 
+\par The quality of fit for a single model is given in fig. \ref{outputExample}. For some models, there are predictions that differ significantly, more than 100$eV$, from their true values, these are configurations that are difficult for the model to predict. In those cases, the number of outlying crystals has been counted then excluded from the average error calculation. In this way, the average error can become mostly independent of the model's outliers. When a difficult-to-predict configuration is poorly predicted and thus excluded from the average error, it can reduce the overall average error for a given model. A better trained model may then predict that configuration energy slightly better, within 100$eV$ of its true value, resulting in a larger average error. Therefore the average error and number of large errors must both be considered when assessing the value of the model. 
 
 \begin{figure}%[h]
 \centering
@@ -8,17 +8,17 @@
 \label{outputExample}} 
 \end{figure}
 
-\par To understand a given model's accuracy and precision visually, each prediction energy can be plotted against the actual energy for each configuration. The model referenced in Figure \ref{outputExample} can be seen in this format in Figure \ref{accuracyPlot}.
+\par To understand a given model's accuracy and precision visually, each prediction energy can be plotted against the actual energy for each configuration. The model referenced in fig. \ref{outputExample} can be seen in this format in fig. \ref{accuracyPlot}.
 
 \begin{figure}%[h]
 \centering
 \includegraphics[scale = 0.4]{Figures/accuracyPlot}
-\caption{Predicted energies versus the actual energies. The model tested is the same as the one shown in Figure \ref{outputExample}. Each energy prediction comes from the holdout set.
+\caption{Predicted energies versus the actual energies. The model tested is the same as the one shown in fig. \ref{outputExample}. Each energy prediction comes from the holdout set.
 \label{accuracyPlot}} 
 \end{figure}
 
-\par This method of visual analysis in Figure \ref{accuracyPlot} works very well for observing one model at a time but interpreting each of the 270 unique models this way would difficult and time consuming. It would be preferable if several data sets could be interpreted at one time.
-\par One of many possible solutions is to use a series of heatmaps showing the average error of each model with it's respective parameters. But as discussed above, the average error does not tell the whole story, the number of large errors must also be accounted. Figure \ref{aveErrorHeatmaps} shows five heatmaps, one for each size of training set. The color in each square represents the average error for a specific model. The scale for each subplot is set to be identical to make its analysis easier. A similar cluster of plots can be seen in Figure \ref{numErrorHeatmaps}, showing the number of large errors for each model. 
+\par This method of visual analysis in fig. \ref{accuracyPlot} works very well for observing one model at a time but interpreting each of the 270 unique models this way would difficult and time consuming. It would be preferable if several data sets could be interpreted at one time.
+\par One of many possible solutions is to use a series of heatmaps showing the average error of each model with it's respective parameters. But as discussed above, the average error does not tell the whole story, the number of large errors must also be accounted. Fig. \ref{aveErrorHeatmaps} shows five heatmaps, one for each size of training set. The color in each square represents the average error for a specific model. The scale for each subplot is set to be identical to make its analysis easier. A similar cluster of plots can be seen in fig. \ref{numErrorHeatmaps}, showing the number of large errors for each model. 
 
 \begin{figure*}
   \centering
@@ -53,7 +53,7 @@
     \caption{} 
     \label{aveErrors10}
   \end{subfigure}%
-\caption{Heatmaps showing the average error of each model produced. The scale for each is fixed from 0eV to 10eV. The effect from removing the large errors from the average can be seen by comparing the more red areas from Figure \ref{numErrorHeatmaps} with the dark blue areas here.}
+\caption{Heatmaps showing the average error of each model produced. The scale for each is fixed from 0eV to 10eV. The effect from removing the large errors from the average can be seen by comparing the more red areas from fig. \ref{numErrorHeatmaps} with the dark blue areas here.}
 \label{aveErrorHeatmaps}
 \end{figure*}
 
@@ -96,8 +96,8 @@
 \end{figure*}
 
 
-\par The true accuracy and precision of each model can only be realized when comparing its results from Figures \ref{aveErrorHeatmaps} \textit{and} \ref{numErrorHeatmaps}. One without the other does not show the full picture. For example, the lower left corner of Figure \ref{aveErrors2} appears to be surprisingly accurate, but when compared with the corresponding squares in Figure \ref{numErrors2}, it can be seen that these models actually produce a considerable number of large errors. These particular models are not of interest. The models that \textit{are} of interest will be the squares from corresponding subplots in Figures \ref{aveErrorHeatmaps} and \ref{numErrorHeatmaps} that are both blue or blue-ish. 
-%\par Figure \ref{numErrors2} includes a large red clump in the bottom right of the plot. This red patch then appears to move upward in each ensuing figure. \ldots \ldots \ldots
+\par The true accuracy and precision of each model can only be realized when comparing its results from figures \ref{aveErrorHeatmaps} \textit{and} \ref{numErrorHeatmaps}. One without the other does not show the full picture. For example, the lower left corner of fig. \ref{aveErrors2} appears to be surprisingly accurate, but when compared with the corresponding squares in fig. \ref{numErrors2}, it can be seen that these models actually produce a considerable number of large errors. These particular models are not of interest. The models that \textit{are} of interest will be the squares from corresponding subplots in figures \ref{aveErrorHeatmaps} and \ref{numErrorHeatmaps} that are both blue or blue-ish. 
+%\par fig. \ref{numErrors2} includes a large red clump in the bottom right of the plot. This red patch then appears to move upward in each ensuing figure. \ldots \ldots \ldots
 \par The most successful model was trained on 1000 configurations, used 40 basis functions, and had an effective radius of 1.0. This model produced 0 large errors and had an average error of only 1.77eV. The second and third best models had very similar input parameters, a one-step change in the size of the training set or the number of basis functions.
 %\par Would this model work in some places, but not in others? \ldots \ldots \ldots
 %\par The success of this simple model may be unique to this silver platinum bond and other particular crystals. But frankly, I have no clue. \ldots\ldots\ldots
