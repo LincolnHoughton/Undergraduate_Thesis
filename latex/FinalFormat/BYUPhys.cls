@@ -379,7 +379,7 @@
     \vfill
     Submitted to Brigham Young University in partial fulfillment\\[\baselineskip]
     of graduation requirements for University Honors\\[2\baselineskip]
-    Department of Physics and Astronomy\\[\baselineskip]
+    Department of Physics\\[\baselineskip]
     \@Month~\@Year
     \vfill
     \end{center}
@@ -482,7 +482,7 @@
     found to be satisfactory.\\[\baselineskip]
     \datebox\hfill\signaturebox{\@Advisor, Advisor}\\
     \datebox\hfill\signaturebox{\@MemberA, Committee Member}\\
-    \datebox\hfill\signaturebox{\@MemberB, Committee Member}\\
+    %\datebox\hfill\signaturebox{\@MemberB, Committee Member}\\
     \datebox\hfill\signaturebox{\@ThesisCoordinator, Thesis Coordinator}\\
     \datebox\hfill\signaturebox{\@DepRep, \@DepRepTitle}\\
     \vfill
@@ -509,8 +509,7 @@
     \datebox\hfill\signaturebox{\@Advisor\\Chair, Graduate Committee}
     \vskip 0pt plus 2fill
     \noindent Accepted for the Department\par\hfill%
-    \signaturebox{\@DepRep, \@DepRepTitle\\Department of Physics and
-    Astronomy }{} \vfill \noindent Accepted for the College\par\hfill
+    \signaturebox{\@DepRep, \@DepRepTitle\\Department of Physics }{} \vfill \noindent Accepted for the College\par\hfill
     \signaturebox{\@Dean, \@DeanTitle \\
     College of Physical and Mathematical Sciences}
     \clearemptydoublepage
@@ -528,7 +527,7 @@
     \@TitleTop\\[\baselineskip]
     \@TitleBottom\\[3\baselineskip]
     \@Author\\[\baselineskip]
-    Department of Physics and Astronomy\\[\baselineskip]
+    Department of Physics \\[\baselineskip]
     \@degree\\[3\baselineskip]
     \end{center}   
     \renewcommand{\baselinestretch}{1.66}\small\normalsize
