@@ -12,7 +12,7 @@ A basic knowledge of linear algebra, data analysis, and signal processing is req
 \par It will be assumed that the function can be expanded using a basis, and in this case, a power series:
 
 \begin{align}
-f(x) &= \sum_{n=0}^\infty b_n x^n
+f(x) &= \sum_{n=0}^\infty x^n b_n
 	\label{eq:powerSum}\\ 
 &= x^0b_0 + x^1b_1 + x^2b_2 + \ldots\ .
 	\label{eq:powerSeries}
@@ -175,13 +175,13 @@ where $\mathbf{A}$ is an $n\times m$ matrix.
   \centering
   \begin{subfigure}{0.53\textwidth}
     \includegraphics[width=\linewidth]{Figures/3dFourier}
-    \caption{Fourier basis. $A$ is a $50\times7$ matrix.} 
+    \caption{Fourier basis. $\mathbf{A}$ is a $50\times7$ matrix.} 
     \label{fig:3dFourier}
   \end{subfigure}%
   \hspace*{\fill}
   \begin{subfigure}{0.5\textwidth}
     \includegraphics[width=\linewidth]{Figures/3dPower}
-    \caption{Power basis. $A$ is a $10\times7$ matrix.} 
+    \caption{Power basis. $\mathbf{A}$ is a $10\times7$ matrix.} 
     \label{fig:3dPower}
   \end{subfigure}%
 \caption{A three dimensional function in blue with a constructed model in green. The red points show the sampling of the true function. (a) In this case, a Fourier basis is a poor choice and resulted in an inaccurate model of the true function. (b) A Power series makes a convincingly better fit even with significantly fewer sample points.} \label{fig:3dFit}
