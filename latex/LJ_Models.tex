@@ -21,6 +21,7 @@ where $\varepsilon$ and $\sigma$ are constants for a given particle interaction.
 F = -\nabla U,
 \end{equation}
 and thus the force between two particles is zero at the bottom of the potential well. With that location as a reference, distances any greater will produce a force that is attractive and at any lesser distance the force is intensely repulsive.
+
 \par Calculating the potential between two particles is not difficult; but finding the total potential energy of a system of several particles becomes increasingly computationaly expensive. Because of the simplicity of the Lennard-Jones potential, the computational power required to solve for the system's energy is still relatively small. In preparation for using real, quantum-mechanical data, each system's energy will be treated as expensive to compute. 
 
 
@@ -52,13 +53,13 @@ V_n
 \end{bmatrix}.
 \label{eq:AMatrix}
 \end{equation}
-\par Recognizing each row of $\mathbf{A}$ as a unique configuration, eq. \ref{eq:AMatrix} can be written as a system of linear equations as follows
+\par Recognizing each row of $\mathbf{A}$ as a unique configuration, eq. \ref{eq:AMatrix} can be written as a system of linear equations as follows:
 \begin{align}
 A_{11}b_1 + A_{12}b_2 + A_{13}b_3 + ... + A_{1m}b_m &= V_1 \nonumber \\
 A_{21}b_1 + A_{22}b_2 + A_{23}b_3 + ... + A_{2m}b_m &= V_2 \nonumber \\
 A_{n1}b_1 + A_{n2}b_2 + A_{n3}b_3 + ... + A_{nm}b_m &= V_n.
 \end{align}
-where $V_n$ is the total potential energy of configuration $n$. Each element of matrix $\mathbf{A}$ will be populated as follows
+where $V_n$ is the total potential energy of configuration $n$. Each element of matrix $\mathbf{A}$ will be populated as follows:
 \begin{align}
 A_{11} &= Y_0(\alpha_{01} r_{12}) + Y_0(\alpha_{01} r_{13}) + Y_0(\alpha_{01} r_{23}) + \ldots \nonumber \\
 A_{12} &= Y_0(\alpha_{02} r_{12}) + Y_0(\alpha_{02} r_{13}) + Y_0(\alpha_{02} r_{23}) + \ldots \nonumber \\
@@ -80,7 +81,7 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth Bessel function of t
 
 
 \section{Multi-Type Particle Systems}\label{Sect:diatomic}
-\par Now that a simple monotomic model has been constructed, it can be adjusted to handle two different types of particles. The different particles can be labeled type-$A$ and type-$B$. This diatomic system will now require \textit{three} different potential equations, one describing each type of interaction. The three unique interactions are type-$A$ interacting with another type-$A$, a type-$A$ interacting with a type-$B$, and a type-$B$ with another type-$B$. Because these are arbitrary interactions (due to unspecified atomic structure), they can be defined by choosing reasonable values of $\varepsilon$ and $\sigma$ from eq. \ref{eq:LJ}. These constants will be chosen as follows
+\par Now that a simple monotomic model has been constructed, it can be adjusted to handle two different types of particles. The different particles can be labeled type-$A$ and type-$B$. This diatomic system will now require \textit{three} different potential equations, one describing each type of interaction. The three unique interactions are type-$A$ interacting with another type-$A$, a type-$A$ interacting with a type-$B$, and a type-$B$ with another type-$B$. Because these are arbitrary interactions (due to unspecified atomic structure), they can be defined by choosing reasonable values of $\varepsilon$ and $\sigma$ from eq. \ref{eq:LJ}. These constants will be chosen as follows:
 \begin{align}
 V_{AB}(r) &= 4 \bigg[\Big(\frac{1}{r}\Big)^{12} - \Big(\frac{1}{r}\Big)^6\bigg] \label{LJ} \\
 V_{AA}(r) &= 4 (0.7) \bigg[\Big(\frac{0.8}{r}\Big)^{12} - \Big(\frac{0.8}{r}\Big)^6\bigg] \label{LJ} \\
