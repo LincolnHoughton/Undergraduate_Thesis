@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2020)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ThesisFinal.aux
+The style file: phBYU.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: ../refs.bib
+Warning--entry type for "_AFLOW" isn't style-file defined
+--line 33 of file ../refs.bib
+Warning--string name "cmp" is undefined
+--line 119 of file ../refs.bib
+Warning--I didn't find a database entry for ""
+Warning--Warning: journal missing in entry kresse1996efficiency.
+You've used 16 entries,
+            2048 wiz_defined-function locations,
+            618 strings with 6097 characters,
+and the built_in function-call counts, 3514 in all, are:
+= -- 140
+> -- 196
+< -- 0
++ -- 61
+- -- 45
+* -- 398
+:= -- 438
+add.period$ -- 16
+call.type$ -- 16
+change.case$ -- 1
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 156
+empty$ -- 380
+format.name$ -- 61
+if$ -- 747
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 0
+newline$ -- 51
+num.names$ -- 16
+pop$ -- 70
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 195
+stack$ -- 0
+substring$ -- 265
+swap$ -- 86
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 34
+width$ -- 18
+write$ -- 81
+(There were 4 warnings)

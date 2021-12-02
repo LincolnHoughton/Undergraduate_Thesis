@@ -1,0 +1,76 @@
+\begin{thebibliography}{10}
+
+\bibitem{LJ-potential}
+J.~E. Jones, ``On the determination of molecular fields.---I. From the
+  variation of the viscosity of a gas with temperature,'' Proceedings of the
+  Royal Society A {\bf 106,} 441--462 (1924).
+
+\bibitem{solidStateBook}
+H.~T. Stokes, {\em Solid State Physics for Advanced Undergraduates}, 4th ed.
+  (Brigham Young University, 2007).
+
+\bibitem{_AFLOW}
+S. Curtarolo, G.~L.~W. Hart, W. Setyawan, R. Chepulskii, O. Levi, and D.
+  Morgan, ``AFLOW:software for high throughput calculation of materials
+  properties,''.
+
+\bibitem{Kohn1965}
+W. Kohn and L.~J. Sham, ``Self-Consistent Equations Including Exchange and
+  Correlation Effects,'' Phys. Rev. {\bf 140,} A1133--A1138 (1965).
+
+\bibitem{curt2005scienceandtech}
+D. Morgan, G. Ceder, and S. Curtarolo, ``High-throughput and data mining with
+  ab initio methods,'' Measurement Science and Technology {\bf 16,} 296 (2005).
+
+\bibitem{curtarolo2003predicting}
+S. Curtarolo, D. Morgan, K. Persson, J. Rodgers, and G. Ceder, ``Predicting
+  crystal structures with data mining of quantum calculations,'' Phys. Rev.
+  Lett. {\bf 91,} 135503 (2003).
+
+\bibitem{Kresse:1999wc}
+G. Kresse and D. Joubert, ``From ultrasoft pseudopotentials to the projector
+  augmented-wave method,'' Phys. Rev. B {\bf 59,} 1758 (1999).
+
+\bibitem{kresse1993abinitio}
+G. Kresse and J. Hafner, ``Ab initio molecular dynamics for liquid metals,''
+  Phys. Rev. B {\bf 47,} 558 (1993).
+
+\bibitem{Blochl:1994dx}
+P.~E. Bl\"ochl, ``Projector augmented-wave method,'' Phys. Rev. B {\bf 50,}
+  17953 (1994).
+
+\bibitem{kresse1996efficiency}
+G. Kresse and J. Furthm\"uller, ``Efficiency of ab-initio total energy
+  calculations for metals and semiconductors using a plane-wave basis set,''
+  {\bf 6,} 15--50 (1996).
+
+\bibitem{monkhorst1976special}
+H. Monkhorst and J. Pack, ``{Special points for Brillouin-zone integrations},''
+  Phys. Rev. B {\bf 13,} 5188--5192 (1976).
+
+\bibitem{sanchez1984generalized}
+J. Sanchez, F. Ducastelle, and D. Gratias, ``{Generalized cluster description
+  of multicomponent systems},'' Physica A: Statistical and Theoretical Physics
+  {\bf 128,} 334--350 (1984).
+
+\bibitem{laks1992efficient}
+D. Laks, L. Ferreira, S. Froyen, and A. Zunger, ``{Efficient cluster expansion
+  for substitutional systems},'' Phys. Rev. B {\bf 46,} 12587 (1992).
+
+\bibitem{lerch2009uncle}
+D. Lerch, O. Wieckhorst, G.~L.~W. Hart, R.~W. Forcade, and S. M\"uller,
+  ``{UNCLE: a code for constructing cluster expansions for arbitrary lattices
+  with minimal user-input},'' Modelling and Simulation in Materials Science and
+  Engineering {\bf 17,} 055003 (2009).
+
+\bibitem{cockayne2010building}
+E. Cockayne and A. Van De~Walle, ``{Building effective models from sparse but
+  precise data: Application to an alloy cluster expansion model},'' Phys. Rev.
+  B {\bf 81,} 012104 (2010).
+
+\bibitem{nelson2013compressive}
+L.~J. Nelson, G.~L. Hart, F. Zhou, and V. Ozoli{\c{n}}{\v{s}}, ``Compressive
+  sensing as a paradigm for building physics models,'' Physical Review B {\bf
+  87,} 035125 (2013).
+
+\end{thebibliography}
