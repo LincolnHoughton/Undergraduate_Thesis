@@ -4,7 +4,7 @@ A basic knowledge of linear algebra, data analysis, and signal processing is req
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.5]{Figures/func1Samples}
+\includegraphics[scale = 0.6]{Figures/func1Samples}
 \caption{An unknown function sampled by 6 data points.
 \label{fig:func1Samples}} 
 \end{figure}
@@ -118,7 +118,7 @@ In an overdetermined system, since the column vectors don't span the space that 
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.5]{Figures/func1True}
+\includegraphics[scale = 0.6]{Figures/func1True}
 \caption{The ``Witch of Agnesi" function with Gaussian noise is shown in blue.  Samples from this function were gathered (circles) and used to construct a model using a simple polynomial basis.  The fit function is depicted in green.
 \label{fig:func1True}} 
 \end{figure}
@@ -158,8 +158,8 @@ where $\mathbf{A}$ is an $n\times m$ matrix.
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.35]{Figures/2dFourier}
-\caption{The sample points shown were used to build a model of the function in green, and the true function is displayed in blue. The Fourier basis resulted in an excellent fit. 
+\includegraphics[scale = 0.43]{Figures/2dFourier}
+\caption{The various sample points shown were used to construct the function model seen in green. The true function is displayed in blue for comparison. The Fourier basis resulted in an excellent fit. 
 \label{fig:2dFourier}} 
 \end{figure}
 
@@ -167,8 +167,8 @@ where $\mathbf{A}$ is an $n\times m$ matrix.
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.5]{Figures/poorSamps}
-\caption{Gathering samples that are not uniformly distributed across the function space will produce a model that does not predict well across the space. In this case, the secret function from fig. \ref{fig:2dFourier} was only sampled from the interval 0 to 1. If the model were evaluated at $x=2.5$, the fit would produce a highly inaccurate result when compared to the true function.
+\includegraphics[scale = 0.6]{Figures/poorSamps}
+\caption{Gathering samples that are not uniformly distributed across the function space will produce a model that does not predict well across the space. In this case, the function from fig. \ref{fig:2dFourier} was only sampled from the interval 0 to 1. If the model were evaluated at $x=2.5$, the fit would produce a highly inaccurate estimate when compared to the true function.
 \label{fig:poorSamps}} 
 \end{figure}
 
@@ -176,16 +176,17 @@ where $\mathbf{A}$ is an $n\times m$ matrix.
 
 \begin{figure}
   \centering
-  \begin{subfigure}{0.53\textwidth}
+  \begin{subfigure}{0.85\textwidth}
     \includegraphics[width=\linewidth]{Figures/3dFourier}
     \caption{Fourier basis. $\mathbf{A}$ is a $50\times7$ matrix.} 
     \label{fig:3dFourier}
   \end{subfigure}%
-  \hspace*{\fill}
-  \begin{subfigure}{0.5\textwidth}
+  %\hspace*{\fill}
+  \\
+  \begin{subfigure}{0.8\textwidth}
     \includegraphics[width=\linewidth]{Figures/3dPower}
     \caption{Power basis. $\mathbf{A}$ is a $10\times7$ matrix.} 
     \label{fig:3dPower}
   \end{subfigure}%
-\caption{A three dimensional function in blue with a constructed model in green. The red points show the sampling of the true function. (a) In this case, a Fourier basis is a poor choice and resulted in an inaccurate model of the true function. (b) A Power series makes a convincingly better fit even with significantly fewer sample points.} \label{fig:3dFit}
+\caption{A three dimensional function in blue with a constructed model in green. The red points show the sampling of the true function. (a) In this case, a Fourier basis is a poor choice and resulted in an inaccurate model regardless of the number of sampling points. (b) A Power series makes a convincing fit even with significantly fewer sample points.} \label{fig:3dFit}
 \end{figure}

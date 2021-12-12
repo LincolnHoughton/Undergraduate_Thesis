@@ -3,8 +3,8 @@
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.5]{Figures/outputExample}
-\caption{An example of the data in the output file. 
+\includegraphics[scale = 0.6]{Figures/outputExample}
+\caption{An example of the data in the output file generated on the supercomputer. The text gives the size of the training set, number of basis functions, and the cutoff radius used to generate the model. It also tells the size of the holdout set, the average error, and the number of errors larger than 100eV.
 \label{outputExample}} 
 \end{figure}
 
@@ -12,13 +12,13 @@
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.4]{Figures/accuracyPlot}
-\caption{Predicted energies versus the actual energies. The model tested is the same as the one shown in fig. \ref{outputExample}. Each energy prediction comes from the holdout set.
+\includegraphics[scale = 0.5]{Figures/accuracyPlot}
+\caption{Predicted energies versus the actual energies for each configuration in the holdout set. This model is the same as the one shown in fig. \ref{outputExample}. The prediction energies seem to form an adequate match to their true values. When the simplicity of this model is contrasted with the high levels of complexity it is attempting to capture, the accuracy of this fit is impressive.
 \label{accuracyPlot}} 
 \end{figure}
 
 \par This method of visual analysis in fig. \ref{accuracyPlot} works very well for observing one model at a time but interpreting each of the 270 unique models this way would be difficult and time consuming. Preferably, several data sets could be interpreted at one time.
-\par One of many possible solutions is to use a series of heatmaps showing the average error of each model with it's respective parameters. But as discussed above, the average error does not tell the whole story; the number of large errors must also be accounted for. Fig. \ref{aveErrorHeatmaps} shows five heatmaps, one for each size of training set. The color in each square represents the average error for a specific model. The scale for each subplot is set to be identical to make its analysis easier. A similar cluster of plots can be seen in fig. \ref{numErrorHeatmaps}, showing the number of large errors for each model. 
+\par One of many possible solutions is to use a series of heatmaps showing the average error of each model with it's respective parameters. But as discussed above, the average error does not tell the whole story; the number of large errors must also be accounted for. Fig. \ref{aveErrorHeatmaps} shows five heatmaps, one for each size of training set. The color in each square represents the average error for a specific model. The scale for each subplot is set to be identical to make its analysis easier. A similar cluster of plots can be seen in fig. \ref{perErrorHeatmaps}, showing the number of large errors for each model. 
 
 \begin{figure*}
   \centering
@@ -53,51 +53,49 @@
     \caption{} 
     \label{aveErrors10}
   \end{subfigure}%
-\caption{Heatmaps showing the average error of each model produced. The scale for each is fixed from 0eV to 10eV. The effect from removing the large errors from the average can be seen by comparing the more red areas from fig. \ref{numErrorHeatmaps} with the dark blue areas here.}
-\label{aveErrorHeatmaps}
+\caption{Heatmaps showing the average error of each model produced. The scale for each is fixed from 0eV to 10eV. The general trend is that each plot is more blue on the left and red on the right. This is because many of the less sophisticated models predict the more difficult configurations poorly, causing them to be excluded from the average error. As the sophistication of the model increases, it will predict these configurations with greater accuracy and thus raise the average error by a noticeable degree. This can be verified by comparing these heatmaps with those in fig. \ref{perErrorHeatmaps}.
+\label{aveErrorHeatmaps}}
 \end{figure*}
 
 
 \begin{figure*}
   \centering
   \begin{subfigure}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{Figures/numErrors2}
+    \includegraphics[width=\linewidth]{Figures/perErrors2}
     \caption{} 
-    \label{numErrors2}
+    \label{perErrors2}
   \end{subfigure}%
   \hspace*{\fill}   % maximize separation between the subfigures
   \begin{subfigure}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{Figures/numErrors4}
+    \includegraphics[width=\linewidth]{Figures/perErrors4}
     \caption{} 
-    \label{numErrors4}
+    \label{perErrors4}
   \end{subfigure}%
     %\hspace*{\fill}   % maximize separation between the subfigures
     \\
   \begin{subfigure}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{Figures/numErrors6}
+    \includegraphics[width=\linewidth]{Figures/perErrors6}
     \caption{} 
-    \label{numErrors6}
+    \label{perErrors6}
   \end{subfigure}%
     \hspace*{\fill}   % maximize separation between the subfigures
   \begin{subfigure}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{Figures/numErrors8}
+    \includegraphics[width=\linewidth]{Figures/perErrors8}
     \caption{} 
-    \label{numErrors8}
+    \label{perErrors8}
   \end{subfigure}%
     %\hspace*{\fill}   % maximize separation between the subfigures
     \\
   \begin{subfigure}{0.5\textwidth}
-    \includegraphics[width=\linewidth]{Figures/numErrors10}
+    \includegraphics[width=\linewidth]{Figures/perErrors10}
     \caption{} 
-    \label{numErrors10}
+    \label{perErrors10}
   \end{subfigure}%
-\caption{Heatmaps showing the number of large errors of each model produced. The scale for each is fixed from 0 to 20 errors. Because the scale is fixed, any square with a deep red color has a minimum of 20 errors.}
-\label{numErrorHeatmaps}
+\caption{Heatmaps showing the percentage of large errors of each model produced. The scale for each is fixed from 0-0.05, or 0-5\%. A model with a percent error of 0.01 would mean that 1 out of every 100 predictions has an error greater than 100eV. The percent error is preferred over the number of large errors because it takes into account the fact that as the size of the training set increases, the size of the holdout set decreses. Thus a model with a large training set will naturally have a smaller number of large errors, but not necessarily a smaller percentage of large errors.
+\label{perErrorHeatmaps}}
 \end{figure*}
 
 
-\par The true accuracy and precision of each model can only be realized when comparing the results from figures \ref{aveErrorHeatmaps} \textit{and} \ref{numErrorHeatmaps}. One without the other does not show the full picture. For example, the lower left corner of fig. \ref{aveErrors2} appears to be surprisingly accurate, but when compared with the corresponding squares in fig. \ref{numErrors2}, a considerable number of large errors can be seen. These particular models are not of interest. The models that \textit{are} of interest will be the squares from corresponding subplots in figures \ref{aveErrorHeatmaps} and \ref{numErrorHeatmaps} that are both blue or blue-ish. 
+\par The true accuracy and precision of each model can only be realized when comparing the results from figures \ref{aveErrorHeatmaps} \textit{and} \ref{perErrorHeatmaps}. One without the other does not show the full picture. For example, the lower left corner of fig. \ref{aveErrors2} appears to be surprisingly accurate, but when compared with the corresponding squares in fig. \ref{perErrors2}, a considerable number of large errors can be seen. These particular models are not of interest. The models that \textit{are} of interest will be the squares from corresponding subplots in figures \ref{aveErrorHeatmaps} and \ref{perErrorHeatmaps} that are both blue or blue-ish. 
 %\par fig. \ref{numErrors2} includes a large red clump in the bottom right of the plot. This red patch then appears to move upward in each ensuing figure. \ldots \ldots \ldots
 \par The most successful model was trained on 1000 configurations, used 40 basis functions, and had an effective radius of 1.0. This model produced 0 large errors and had an average error of only 1.77eV. The second and third best models had very similar input parameters, a one-step change in the size of the training set or the number of basis functions.
-%\par Would this model work in some places, but not in others? \ldots \ldots \ldots
-%\par The success of this simple model may be unique to this silver platinum bond and other particular crystals. But frankly, I have no clue. \ldots\ldots\ldots

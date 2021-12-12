@@ -10,8 +10,8 @@ where $\varepsilon$ and $\sigma$ are constants for a given particle interaction.
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.5]{Figures/LJPotential}
-\caption{The Lennard-Jones potential. A simple yet realistic model of intramolecular forces.
+\includegraphics[scale = 0.6]{Figures/LJPotential}
+\caption{The Lennard-Jones potential where $\varepsilon=\sigma=0$. This is a simple yet realistic model of intramolecular forces.
 \label{fig:LJ}} 
 \end{figure}
 
@@ -71,8 +71,8 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth Bessel function of t
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.4]{Figures/tenParticles}
-\caption{A random assortment of 10 particles in a 4x4 square. No two particles are allowed to be within a pre-specified distance of each other. 
+\includegraphics[scale = 0.3]{Figures/tenParticles}
+\caption{A random assortment of 10 particles in a 4x4 square. No two particles are allowed to be within a pre-specified distance of each other. A model will be trained and tested on configurations similar to this one in the hopes of accurately predicting the Lennard-Jones potential of the system. 
 \label{fig:tenParticles}} 
 \end{figure}
 
@@ -91,8 +91,8 @@ The graph of each potential can be seen in fig. \ref{fig:3LJ}. Each of the equil
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.5]{Figures/newLJPotential}
-\caption{A Lennard-Jones potential for each particle interaction type (AA, AB, and BB). Each interaction potential has a slightly different equilibrium position and energy. 
+\includegraphics[scale = 0.6]{Figures/newLJPotential}
+\caption{A Lennard-Jones potential for a diatomic particle configuration. Each particle interaction type (AA, AB, and BB) has a slightly different equilibrium position and energy. Valuse of $\varepsilon$ and $\sigma$ are chosen to be close to 1 for the sake of simplicity.
 \label{fig:3LJ}} 
 \end{figure}
 
@@ -102,8 +102,8 @@ The graph of each potential can be seen in fig. \ref{fig:3LJ}. Each of the equil
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.4]{Figures/diatomicAccuracy}
-\caption{1000 tests of a model with a training size of 300 systems, 900 total basis functions, and a spread of particle type ratios each for a 10 particle system. The fit is very good, denoting a highly accurate model.
+\includegraphics[scale = 0.45]{Figures/diatomicAccuracy}
+\caption{1000 tests on a model with a training set of 300 configurations, 300 basis functions, and a spread of particle type ratios each for a 10 particle system. The fit is very good, denoting a highly accurate model.
 \label{fig:diatomicAccuracy}}
 \end{figure}
 

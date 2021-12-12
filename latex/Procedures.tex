@@ -5,8 +5,8 @@
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.4]{Figures/UnitCellEnergies}
-\caption{A histogram showing all the configuration energies in the original data file. The majority lie within the $-20$eV to $-60$eV range, with a few outliers around $-150$eV.
+\includegraphics[scale = 0.45]{Figures/UnitCellEnergies}
+\caption{A histogram showing all the configuration energies in the original data file. The majority lie within the $-20$eV to $-60$eV range, with a few outliers around $-150$eV. These outliers will result in configuration energies that are difficult for the models to predict.
 \label{histEnergy}} 
 \end{figure}
 
@@ -25,15 +25,16 @@
     %\caption{Second subfigure} 
     \label{primitiveSecond}
   \end{subfigure}%
-\caption{The primitive unit cell for configuration 65 from two different perspectives. The blue point is the single Ag atom while each red point shows each Pt atom in said configuration.} \label{primitiveUnitCells}
+\caption{An example of a primitive unit cell configuration from two different perspectives. The blue point is the single Ag atom while each red point shows the Pt atoms.
+\label{primitiveUnitCells}}
 \end{figure}
 
-\par To use the data in the \textit{.txt} file, it needs to be parsed into vectors that can be easily manipulated. An example of the data being parsed can be seen in fig. \ref{system2data}. The number on the second line is the lattice parameter, followed by three lattice vectors in $(i,j,k)$ coordinates. The line following contains two numbers, the number of silver (Ag) and platinum (Pt) atoms. In direct coordinates (in terms of the lattice vectors) the positions of each silver and platinum atom are then given. The last line in this system tells the total potential energy of the unit cell configuration. 
+\par The data being used is in a \textit{.txt} file, thus it needs to be parsed into vectors that can be easily manipulated. An example of the raw data can be seen in fig. \ref{system2data}. The number on the second line is the lattice parameter, followed by three lattice vectors in $(i,j,k)$ coordinates. The line following contains two numbers, the number of silver (Ag) and platinum (Pt) atoms. In direct coordinates (in terms of the lattice vectors) the positions of each silver and platinum atom are then given. The last line in this system tells the total potential energy of the unit cell configuration. 
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.4]{Figures/system2}
-\caption{An example of the data given in AgPtdata.txt that needs to be used to build the model.
+\includegraphics[scale = 0.47]{Figures/system2}
+\caption{An example configuration from the data given in the \textit{.txt} file. The entire file must be read and parsed into vectors so the data can be organized to construct a model.
 \label{system2data}} 
 \end{figure}
 
@@ -56,15 +57,15 @@
     %\caption{Second subfigure} 
     \label{iteratedUnitCellSecond}
   \end{subfigure}
-\caption{The sphere of influence for one silver atom is completely encapsulated by the unit cell's iterations from two different perspectives. Only one particle from each unit cell is shown.} \label{iteratedUnitCells}
+\caption{The sphere of influence for a single silver atom is completely encapsulated by the iterations of the unit cell as seen from two different perspectives. Only one particle from each cell is shown.} \label{iteratedUnitCells}
 \end{figure}
 
 \par Each unit cell in fig. \ref{iteratedUnitCells} can now be populated with all the contained atoms. Every atom inside the sphere can then be extracted. When these atoms are stored into a new vector, they can be plotted as in fig. \ref{plotAgAtomSphere}. When this process is repeated for every system in the DFT data, the result is a vector containing these ``important positions" for each unique silver and platinum atom in each unit cell. The separation vector norms can be quickly calculated and stored.
 
 \begin{figure}%[h]
 \centering
-\includegraphics[scale = 0.65]{Figures/plotAgAtomSphere(3,1)}
-\caption{Every silver and platinum atom inside the sphere of interest. According to the model, these are the only atoms interacting with the central atom in question. This data is taken from the first silver atom in the third configuration. 
+\includegraphics[scale = 0.85]{Figures/plotAgAtomSphere(3,1)}
+\caption{Every silver and platinum atom inside the sphere of interest centered on a single silver atom. Due to the cutoff radius, these are the only atoms interacting with the central atom. This data was generated for the first silver atom in the third sample configuration. 
 \label{plotAgAtomSphere}} 
 \end{figure}
 
