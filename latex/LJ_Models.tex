@@ -1,7 +1,7 @@
 \chapter{Preliminary Modeling}\label{Sect:modelPrep}
 
 \section{Lennard-Jones Potential}\label{Sect:LJPotential}
-Before jumping to the DFT data, this math and theory will be confirmed by constructing models on a simplified potential, the Lennard-Jones potential \cite{LJ-potential}. Though the Lennard-Jones potential is a simplification of reality, it does an excellent job representing real intermolecular forces of attraction and repulsion. The potential is a function of distance between two particles given by
+Before jumping to the DFT data, the math and theory in the previous chapter will be confirmed by constructing models on a simplified potential, the Lennard-Jones potential \cite{LJ-potential}. Though the Lennard-Jones potential is a simplification of reality, it does an excellent job representing real intermolecular forces of attraction and repulsion. The potential is a function of distance between two particles given by
 
 \begin{equation} \label{eq:LJ}
 V_{LJ}(r) = 4\varepsilon \bigg[\Big(\frac{\sigma}{r}\Big)^{12} - \Big(\frac{\sigma}{r}\Big)^6\bigg],
@@ -15,7 +15,7 @@ where $\varepsilon$ and $\sigma$ are constants for a given particle interaction.
 \label{fig:LJ}} 
 \end{figure}
 
-\par It can be recalled that the force from a potential is given by
+\par It can be recalled that the force from a changing potential is given by
 
 \begin{equation} \label{eq:forceEq}
 F = -\nabla U,
@@ -27,7 +27,7 @@ and thus the force between two particles is zero at the bottom of the potential 
 
 
 \section{Constructing a Model}\label{Sect:LJModels}
-\par Ensuring a sufficient number and breadth of samples as well as reasonable basis functions becomes difficult as the number of dimensions goes beyond 2 or 3. Ways to determine quality of samples will be discussed later and from studying a variety of potential basis functions, Bessel functions of the second kind, $Y_\alpha(x)$, have the potential to be useful.
+\par Ensuring a sufficient number and breadth of samples as well as reasonable basis functions becomes difficult as the complexity of the information being modeled increases. Ways to determine quality of samples will be discussed later and from studying a variety of potential basis functions, Bessel functions of the second kind, $Y_\alpha(x)$, have the potential to be useful.
 \par Rewriting eq. \ref{eq:Aby} in component form yields
 \begin{equation}
 \begin{bmatrix}
@@ -57,7 +57,7 @@ V_n
 \begin{align}
 A_{11}b_1 + A_{12}b_2 + A_{13}b_3 + ... + A_{1m}b_m &= V_1 \nonumber \\
 A_{21}b_1 + A_{22}b_2 + A_{23}b_3 + ... + A_{2m}b_m &= V_2 \nonumber \\
-A_{n1}b_1 + A_{n2}b_2 + A_{n3}b_3 + ... + A_{nm}b_m &= V_n.
+A_{n1}b_1 + A_{n2}b_2 + A_{n3}b_3 + ... + A_{nm}b_m &= V_n
 \end{align}
 where $V_n$ is the total potential energy of configuration $n$. Each element of matrix $\mathbf{A}$ will be populated as follows:
 \begin{align}
@@ -72,7 +72,7 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth Bessel function of t
 \begin{figure}%[h]
 \centering
 \includegraphics[scale = 0.3]{Figures/tenParticles}
-\caption{A random assortment of 10 particles in a 4x4 square. No two particles are allowed to be within a pre-specified distance of each other. A model will be trained and tested on configurations similar to this one in the hopes of accurately predicting the Lennard-Jones potential of the system. 
+\caption{A random assortment of 10 particles in a box. No two particles are allowed to be within a pre-specified distance of each other. A model will be trained and tested on configurations similar to this one in the hopes of accurately predicting the Lennard-Jones potential of the system. 
 \label{fig:tenParticles}} 
 \end{figure}
 

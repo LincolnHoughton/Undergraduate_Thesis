@@ -1,6 +1,6 @@
 \chapter{Background}\label{Sect:background}
 \section{Linear Algebra}\label{Sect:linearAlgebra}
-A basic knowledge of linear algebra, data analysis, and signal processing is required to understand how to build simple yet useful models. Samples from an unknown function are presented in Figure \ref{fig:func1Samples}. Building a function that matches the data will now be investigated.
+A basic knowledge of linear algebra, data analysis, and signal processing is required to understand how to build simple yet useful models. Samples from an unknown function are presented in fig. \ref{fig:func1Samples}. Building a function that matches the data will now be investigated.
 
 \begin{figure}%[h]
 \centering
@@ -14,11 +14,10 @@ A basic knowledge of linear algebra, data analysis, and signal processing is req
 \begin{align}
 f(x) &= \sum_{n=0}^\infty x^n b_n
 	\label{eq:powerSum}\\ 
-&= x^0b_0 + x^1b_1 + x^2b_2 + \ldots\ .
+&= x^0b_0 + x^1b_1 + x^2b_2 + \ldots
 	\label{eq:powerSeries}
 \end{align}
-
-with the coefficients $b_n$ to be determined via the fitting process. Evaluating eq. \ref{eq:powerSeries} at the observed data points in figure \ref{fig:func1Samples} produces a system of equations:
+with the coefficients $b_n$ to be determined via the fitting process. Evaluating eq. \ref{eq:powerSum} at the observed data points in fig. \ref{fig:func1Samples} produces a system of equations:
 
 \begin{align}
 f(0) &= b_0 \nonumber \\
@@ -54,7 +53,12 @@ f(x_3) \\
 \end{bmatrix}.
 \end{equation}
 
-And finally, $\mathbf{A}$ and $\vec{y}$ can be populated with their true values,
+For notation purposes, this matrix equation can be written as 
+\begin{equation}\label{eq:aby}
+\mathbf{A}\vec{b}=\vec{y}.
+\end{equation}
+
+And finally, $\mathbf{A}$ and $\vec{y}$ in eq. \ref{eq:LinAlgSubscript} can be populated with their true values,
 
 \begin{equation} \label{eq:realValues}
 \begin{bmatrix}
@@ -88,7 +92,7 @@ The shape of the matrix $\mathbf{A}$ determines the type of solution that can be
 
 
 \subsection{Underdetermined systems}
-Because the columns of an underdetermined system are linearly dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. 
+Because the columns of an underdetermined system are linearly dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. This $\ell_2$-norm, sometimes referred to as the Euclidean norm, is defined as $||\vec{x}||_2=\sqrt{x_1^2+\ldots+x_n^2}$.
 
 \par Any matrix can be written as the product of three matrices. Solving an underdetermined system is done by using singular value decomposition (SVD) to simplify the calculation of $\mathbf{A}^{-1}$. To solve $\mathbf{A}\vec{b}=\vec{y}$, first the eigenvalues and their corresponding orthonormal eigenvectors of $\mathbf{A}^T\mathbf{A}$ must be found. Matrices $U$ and $V$ contain these eigenvectors as their columns and rows, respectively. $\Sigma$ is a diagonal matrix containing the singular values (the square roots of each non-zero eigenvalue), $\sigma_k$, matching the shape of $\mathbf{A}$. The final result is the complete SVD of $\mathbf{A}$ where $\vec{b}$ can be solved by,
 \begin{align}
@@ -108,8 +112,8 @@ In an overdetermined system, since the column vectors don't span the space that 
 \mathbf{A}\vec{b} &= \vec{y} \label{eq:Aby} \\
 %\mathbf{A}^T(\vec{y} - \mathbf{A} \hat{\vec{b}}) &= 0 \nonumber \\
 %\mathbf{A}^T\vec{y} &= \mathbf{A}^T\mathbf{A}\hat{\vec{b}} \nonumber \\
-\mathbf{A}^T\mathbf{A}\hat{\vec{b}} &= \mathbf{A}^T\vec{y}\\
-\hat{\vec{b}} &= (\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\vec{y}. \nonumber %\label{eq:bSolve}
+\mathbf{A}^T\mathbf{A}\hat{b} &= \mathbf{A}^T\vec{y}\\
+\hat{b} &= (\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\vec{y}. \nonumber %\label{eq:bSolve}
 \end{align}
 %where $\mathbf{A}^T$ denotes the transpose of $\mathbf{A}$.
 
@@ -126,7 +130,7 @@ In an overdetermined system, since the column vectors don't span the space that 
 
 
 \section{Basis Functions and Size of Training Set}\label{Sect:samplesAndFunctions}
-\par The quality of the fit will be affected by (1)- the size of the training set (number of rows in matrix $\mathbf{A}$) and (2)- number of basis functions included in the expansion (columns in matrix $\mathbf{A}$). The convergence of our model with respect to these two parameters must be investigated. In theory there is no limit to the size of the training set or number of basis functions. However, since QM data is costly to generate, the size of the training set has a reasonable upper limit on the order of hundreds. In the example given, an increase in the traning set size or basis functions count will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
+\par The quality of the fit will be affected by (1) the size of the training set (number of rows in matrix $\mathbf{A}$) and (2) number of basis functions included in the expansion (columns in matrix $\mathbf{A}$). The convergence of our model with respect to these two parameters must be investigated. In theory there is no limit to the size of the training set or number of basis functions. However, since quantum mechanical (QM) data is costly to generate, the size of the training set has a reasonable upper limit on the order of hundreds. In the example given, an increase in the traning set size or basis functions count will not dramatically affect the computational power required, but becomes a greater concern for models of systems with increasing complexity. 
 \par As discussed, the number of basis functions can make a large impact, but another important factor is quality. Though the choice of basis functions in the example above was simple, it can often be a difficult choice. Consider, for example, a Fourier basis. The equivalent of eq. \ref{eq:LinAlgSubscript} in this basis would be
 
 \begin{equation} \label{eq:fourierBasis}
