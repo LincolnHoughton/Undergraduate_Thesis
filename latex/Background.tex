@@ -94,7 +94,7 @@ The shape of the matrix $\mathbf{A}$ determines the type of solution that can be
 \subsection{Underdetermined systems}
 Because the columns of an underdetermined system are linearly dependent, there are an infinite number of vectors $\vec{b}$ that can solve the system.  To arrive at a single vector, the solution must be constrained using some chosen criteria.  A commonly-used criteria is to minimize the $\ell_2$-norm of the solution vector. This $\ell_2$-norm, sometimes referred to as the Euclidean norm, is defined as $||\vec{x}||_2=\sqrt{x_1^2+\ldots+x_n^2}$.
 
-\par Any matrix can be written as the product of three matrices. Solving an underdetermined system is done by using singular value decomposition (SVD) to simplify the calculation of $\mathbf{A}^{-1}$. To solve $\mathbf{A}\vec{b}=\vec{y}$, first the eigenvalues and their corresponding orthonormal eigenvectors of $\mathbf{A}^T\mathbf{A}$ must be found. Matrices $U$ and $V$ contain these eigenvectors as their columns and rows, respectively. $\Sigma$ is a diagonal matrix containing the singular values (the square roots of each non-zero eigenvalue), $\sigma_k$, matching the shape of $\mathbf{A}$. The final result is the complete SVD of $\mathbf{A}$ where $\vec{b}$ can be solved by,
+\par Solving an underdetermined system is done by using singular value decomposition (SVD) to simplify the calculation of $\mathbf{A}^{-1}$. SVD allows $\mathbf{A}$ to be factored into three elementary matrices. To solve $\mathbf{A}\vec{b}=\vec{y}$, first the eigenvalues and their corresponding orthonormal eigenvectors of $\mathbf{A}^T\mathbf{A}$ must be found. Matrices $U$ and $V$ contain these eigenvectors as their columns and rows, respectively. $\Sigma$ is a diagonal matrix containing the singular values (the square roots of each non-zero eigenvalue), $\sigma_k$, matching the shape of $\mathbf{A}$. The final result is the complete SVD of $\mathbf{A}$ where $\vec{b}$ can be solved by,
 \begin{align}
 \mathbf{A} &= U\Sigma V^T \nonumber \\
 \vec{b} &= (U\Sigma V^T)^T\vec{y} \nonumber \\
@@ -176,7 +176,7 @@ where $\mathbf{A}$ is an $n\times m$ matrix.
 \label{fig:poorSamps}} 
 \end{figure}
 
-\par By this point it should be obvious to the reader that the decision of number and breadth of sample points as well as quantity and quality of basis functions is critical to the model's performance. With well chosen basis functions but poor breadth of samples, a model's accuracy can be greatly limited, as in fig. \ref{fig:poorSamps}. Fig. \ref{fig:3dFourier} shows the reverse situation, good number and breadth of samples, but poorly chosen basis functions. 
+\par By this point it should be obvious to the reader that the decision of number and breadth of sample points as well as quantity and quality of basis functions is critical to the model's performance. With well chosen basis functions but poor breadth of samples, a model's accuracy can be greatly limited, as in fig. \ref{fig:poorSamps}. Fig. \ref{fig:3dFourier} shows the reverse situation, good number and breadth of samples, but poorly chosen basis functions. To contrast the poor fit of fig. \ref{fig:3dFourier}, the power basis in fig. \ref{fig:3dPower} produces an excellent fit with very few sample points.
 
 \begin{figure}
   \centering

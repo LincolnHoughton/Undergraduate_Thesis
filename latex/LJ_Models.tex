@@ -6,12 +6,12 @@ Before jumping to the DFT data, the math and theory in the previous chapter will
 \begin{equation} \label{eq:LJ}
 V_{LJ}(r) = 4\varepsilon \bigg[\Big(\frac{\sigma}{r}\Big)^{12} - \Big(\frac{\sigma}{r}\Big)^6\bigg],
 \end{equation}
-where $\varepsilon$ and $\sigma$ are constants for a given particle interaction. Fig. \ref{fig:LJ} shows the plot of this potential.
+where $\varepsilon$ and $\sigma$ are constants for a given particle interaction. This potential is intended to be scaled with different units of distance depending on a specific interaction, however the example here will maintain arbitrary units. Fig. \ref{fig:LJ} shows the plot of this potential.
 
 \begin{figure}%[h]
 \centering
 \includegraphics[scale = 0.6]{Figures/LJPotential}
-\caption{The Lennard-Jones potential where $\varepsilon=\sigma=0$. This is a simple yet realistic model of intramolecular forces.
+\caption{The unitless Lennard-Jones potential where $\varepsilon=\sigma=0$. This is a simple yet realistic model of intramolecular forces.
 \label{fig:LJ}} 
 \end{figure}
 
@@ -72,11 +72,11 @@ where $\alpha_{0m}$ is the $m$-th zero of $Y_0$, the zeroth Bessel function of t
 \begin{figure}%[h]
 \centering
 \includegraphics[scale = 0.3]{Figures/tenParticles}
-\caption{A random assortment of 10 particles in a box. No two particles are allowed to be within a pre-specified distance of each other. A model will be trained and tested on configurations similar to this one in the hopes of accurately predicting the Lennard-Jones potential of the system. 
+\caption{A random assortment of 10 particles in a $4\times4$ box. No two particles are allowed to be within a pre-specified distance of each other. A model will be trained and tested on configurations similar to this one in the hopes of accurately predicting the Lennard-Jones potential of the system. 
 \label{fig:tenParticles}} 
 \end{figure}
 
-\par Through experimentation, the detailed relationship between size of the training set, number of basis functions, and the minimum separation distance can be outlined. In general, the accuracy of the model increases as the number of training sets and basis functions increases. The accuracy also increases when the minimum separation distance does not correspond to a particularly large potential energy. In the case of the Lennard-Jones potential in fig. \ref{fig:LJ}, the minimum separation distance has a preferred minimum of 0.8 or 0.9 to avoid large errors in the constructed model.
+\par Through experimentation, the detailed relationship between size of the training set, number of basis functions, and the minimum separation distance can be outlined. In general, the accuracy of the model increases as the number of training sets and basis functions increases. The accuracy also increases when the minimum separation distance does not correspond to a particularly large potential energy. In the case of the Lennard-Jones potential in fig. \ref{fig:LJ}, the minimum separation distance has a reasonable minimum of 0.8 or 0.9 units to avoid large errors in the constructed model.
 
 
 
@@ -100,11 +100,11 @@ The graph of each potential can be seen in fig. \ref{fig:3LJ}. Each of the equil
 \par This question can be generalized to ask: what is a sufficient breadth of samples for this model? The answer depends greatly upon the desired range of predictions. As will be seen in Chapter \ref{Sect:procedureData}, the actual configurations vary in particle number and particle type ratio. Therefore, the model constructed here should be trained and tested using a spread of values for those two variables. Each training and testing set will thus be populated by a random number and ratio of particles. 
 \par Once a model has been properly constructed and trained, its accuracy can be visually determined by plotting each system's predicted energy versus its actual energy. An example of this type of plot can be seen in fig. \ref{fig:diatomicAccuracy} and will be used again later on.
 
-\begin{figure}%[h]
+\begin{figure}[!b]
 \centering
 \includegraphics[scale = 0.45]{Figures/diatomicAccuracy}
 \caption{1000 tests on a model with a training set of 300 configurations, 300 basis functions, and a spread of particle type ratios each for a 10 particle system. The fit is very good, denoting a highly accurate model.
 \label{fig:diatomicAccuracy}}
 \end{figure}
 
-\par Now that a successful model has been created for a simplified potential, it can be adapted to fit real data in the hopes of producing useful data faster than current models.
+\par Now that a successful model has been created for a simplified potential, it can be adapted to fit real QM data in the hopes of producing useful data faster than first-principles calculations.
